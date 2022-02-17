@@ -1,0 +1,1 @@
+export * from '@app/modules/projects-section/pages/project-list/project-list.component';
