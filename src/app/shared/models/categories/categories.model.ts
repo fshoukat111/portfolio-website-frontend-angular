@@ -1,4 +1,4 @@
 export class Categories {
-    _id:string;
-    categoryTitle:string;
+    _id?:string;
+    categoryTitle?:string;
 }

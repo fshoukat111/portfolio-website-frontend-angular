@@ -13,7 +13,7 @@ export class UsersService {
 
   /**
    * register user
-   * @param user 
+   * @param user
    */
   registerUser(user: Users): Observable<Users> {
     return this.requestService.post(`${ApiUrl.backendUrl}/${ApiUrl.register}`, { user })
@@ -21,10 +21,10 @@ export class UsersService {
 
   /**
    * login user
-   * @param user 
+   * @param user
    */
-  loginUser(user: Users): Observable<Users> {
-    return this.requestService.post(`${ApiUrl.backendUrl}/${ApiUrl.login}`, { user })
+  loginUser(email:string,password:string): Observable<Users> {
+    return this.requestService.post(`${ApiUrl.backendUrl}/${ApiUrl.login}`, {email,password} )
   }
 
   /**
