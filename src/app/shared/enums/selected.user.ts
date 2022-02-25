@@ -1,4 +1,4 @@
-export const selectedUser = {
-  admin:"Admin",
-  user:"User"
+export enum selectedUser {
+  admin = "Admin",
+  user = "User"
 }

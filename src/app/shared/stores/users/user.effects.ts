@@ -5,6 +5,8 @@ import * as userAction from '@app/shared/stores/users/user.actions';
 import { of } from 'rxjs';
 import { UsersService } from '@app/core/services/users/users.service';
 import { Users } from '@app/shared/models/users/users.model';
+import { selectedUser } from '@app/shared/enums/selected.user';
+import { LocalStorageService } from '@app/core/services/local-storage.service';
 
 
 @Injectable()
@@ -12,6 +14,7 @@ export class UserSectionEffects {
   constructor(
     private actions$: Actions,
     private userService: UsersService,
+    private localStorage: LocalStorageService,
   ) { }
 
   /**
@@ -46,7 +49,7 @@ export class UserSectionEffects {
   getLoginUser$ = createEffect(() =>
     this.actions$.pipe(ofType(userAction.LoadPostLoginUser),
       switchMap((action) => {
-        return this.userService.loginUser(action.email,action.password).pipe(map((user: Users) => {
+        return this.userService.loginUser(action.email, action.password).pipe(map((user: Users) => {
           return userAction.LoadPostLoginUserSuccess({ user });
         }),
           catchError((error) => {

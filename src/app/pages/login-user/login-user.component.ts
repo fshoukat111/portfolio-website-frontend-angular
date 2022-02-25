@@ -22,13 +22,15 @@ export class LoginUserComponent implements OnInit {
   }
 
   public loginUser(){
-    this.userStore.dispatch(LoadPostLoginUser({email:this.user.email,password:this.user.password}))
+    this.userStore.dispatch(LoadPostLoginUser({email:this.user.email,password:this.user.password}));
     if(this.user.role === selectedUser.admin){
       this.router.navigate([AppRotues.admin]);
     }
     else{
-
+      this.router.navigate([`${AppRotues.admin}/${AppRotues.create}`])
     }
+    console.log("this.user.role",this.user.role)
+
   }
 
 }

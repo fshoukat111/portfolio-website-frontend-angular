@@ -1,1 +1,74 @@
-<p>register-user works!</p>
+<div class="form-class">
+  <mat-card>
+    <mat-card-title>Register</mat-card-title>
+    <mat-card-content>
+      <form autocomplete="off">
+        <div>
+          <mat-form-field appearance="legacy">
+            <mat-label>User Name:</mat-label>
+            <input
+              matInput
+              type="text"
+              name="username"
+              [(ngModel)]="user.userName"
+              placeholder="Your User Name"
+            />
+            <mat-icon matSuffix>mail_outline</mat-icon>
+            <mat-hint></mat-hint>
+            <!-- <mat-error *ngIf="(form.get('email')).errors?.required">Email is required</mat-error>
+                    <mat-error *ngIf="(form.get('email')).errors?.pattern">Please enter valid email</mat-error> -->
+          </mat-form-field>
+        </div>
+
+        <div>
+          <mat-form-field appearance="legacy">
+            <mat-label>Email Address:</mat-label>
+            <input
+              matInput
+              type="email"
+              name="email"
+              [(ngModel)]="user.email"
+              placeholder="Your email"
+            />
+            <mat-icon matSuffix>mail_outline</mat-icon>
+            <mat-hint>Input the fully qualified email address</mat-hint>
+            <!-- <mat-error *ngIf="(form.get('email')).errors?.required">Email is required</mat-error>
+                    <mat-error *ngIf="(form.get('email')).errors?.pattern">Please enter valid email</mat-error> -->
+          </mat-form-field>
+        </div>
+
+        <div>
+          <mat-form-field appearance="standard">
+            <mat-label>Password </mat-label>
+            <input
+              type="password"
+              name="password"
+              matInput
+              [(ngModel)]="user.password"
+            />
+            <!-- <input matInput [type]="flag ? 'password' : 'text'" placeholder="Enter your password"
+                        formControlName="password"> -->
+            <mat-icon></mat-icon>
+            <!-- <mat-icon (click)="flag=!flag" matSuffix>{{ flag ? 'visibility' : 'visibility_off' }}</mat-icon> -->
+            <!-- <mat-error>Name is required</mat-error>
+                    <mat-error *ngIf="(form.get('password')).errors?.minlength">
+                        Please enter more than 6 character
+                    </mat-error> -->
+          </mat-form-field>
+        </div>
+
+        <div class="form-button"
+        >
+          <button
+            (click)="registerUser()"
+            mat-raised-button
+            color="primary"
+            type="submit"
+          >
+            Register
+          </button>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>
