@@ -4,7 +4,8 @@ import { map, catchError, switchMap, mergeMap } from 'rxjs/operators';
 import * as userAction from '@app/shared/stores/users/user.actions';
 import { of } from 'rxjs';
 import { UsersService } from '@app/core/services/users/users.service';
-import { Users } from '@app/shared/models/users/users.model';
+import { Auth, Users } from '@app/shared/models/users/users.model';
+import { LocalStorageService } from '@app/core/services/local-storage.service';
 
 
 @Injectable()
@@ -12,6 +13,7 @@ export class UserSectionEffects {
   constructor(
     private actions$: Actions,
     private userService: UsersService,
+    private localStorage: LocalStorageService,
   ) { }
 
   /**
@@ -22,8 +24,8 @@ export class UserSectionEffects {
   getRegisterUser$ = createEffect(() =>
     this.actions$.pipe(ofType(userAction.LoadPostRegisterUser),
       switchMap((action) => {
-        return this.userService.registerUser(action.user).pipe(map((user: Users) => {
-          return userAction.LoadPostRegisterUserSuccess({ user });
+        return this.userService.registerUser(action.user).pipe(map((auth: Auth) => {
+          return userAction.LoadPostRegisterUserSuccess({ auth });
         }),
           catchError((error) => {
             // this.messageService.add({
@@ -46,8 +48,9 @@ export class UserSectionEffects {
   getLoginUser$ = createEffect(() =>
     this.actions$.pipe(ofType(userAction.LoadPostLoginUser),
       switchMap((action) => {
-        return this.userService.loginUser(action.email,action.password).pipe(map((user: Users) => {
-          return userAction.LoadPostLoginUserSuccess({ user });
+        return this.userService.loginUser(action.email, action.password).pipe(map((auth: Auth) => {
+           this.localStorage.set("Role",auth.user.role)
+          return userAction.LoadPostLoginUserSuccess({ auth });
         }),
           catchError((error) => {
             // this.messageService.add({

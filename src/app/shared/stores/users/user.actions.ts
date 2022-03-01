@@ -1,5 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-import { Users } from '@app/shared/models/users/users.model';
+import { Auth, Users } from '@app/shared/models/users/users.model';
 
 
 // Load Register User Action
@@ -12,7 +12,7 @@ export const LoadPostRegisterUser = createAction(
 // Load Register User Action Successful
 export const LoadPostRegisterUserSuccess = createAction(
   '[LoadPostRegisterUserSuccess] LoadPostRegisterUserSuccess',
-  props<{ user: Users }>()
+  props<{ auth: Auth }>()
 );
 
 // Load Register User Action Failure
@@ -31,7 +31,7 @@ export const LoadPostLoginUser = createAction(
 // Load Login User Action Successful
 export const LoadPostLoginUserSuccess = createAction(
   '[LoadPostLoginUserSuccess] LoadPostLoginUserSuccess',
-  props<{ user: Users }>()
+  props<{ auth: Auth }>()
 );
 
 // Load Login User Action Failure

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { LocalStorageService } from '@app/core/services';
 import { AppRotues } from '@app/shared/constants/app.routes';
 import { selectedUser } from '@app/shared/enums/selected.user';
 import { Users } from '@app/shared/models/users/users.model';
@@ -14,7 +15,11 @@ import { Store } from '@ngrx/store';
 export class LoginUserComponent implements OnInit {
   public user:Users = new Users();
 
-  constructor(private userStore:Store,private router:Router) { }
+  constructor(
+    private userStore:Store,
+    private router:Router,
+    private localStroage:LocalStorageService
+    ) { }
 
 
 
@@ -22,13 +27,16 @@ export class LoginUserComponent implements OnInit {
   }
 
   public loginUser(){
-    this.userStore.dispatch(LoadPostLoginUser({email:this.user.email,password:this.user.password}))
-    if(this.user.role === selectedUser.admin){
+    let roleUser =  this.localStroage.get("Role");
+    if(roleUser === selectedUser.admin){
       this.router.navigate([AppRotues.admin]);
     }
     else{
-
+      this.router.navigate([AppRotues.portfolios])
     }
+    this.userStore.dispatch(LoadPostLoginUser({email:this.user.email,password:this.user.password}));
+
+
   }
 
 }
