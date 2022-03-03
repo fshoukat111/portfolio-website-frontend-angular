@@ -49,7 +49,8 @@ export class UserSectionEffects {
     this.actions$.pipe(ofType(userAction.LoadPostLoginUser),
       switchMap((action) => {
         return this.userService.loginUser(action.email, action.password).pipe(map((auth: Auth) => {
-           this.localStorage.set("Role",auth.user.role)
+           this.localStorage.set("role",auth.user.role)
+           this.localStorage.set("token",auth.token)
           return userAction.LoadPostLoginUserSuccess({ auth });
         }),
           catchError((error) => {

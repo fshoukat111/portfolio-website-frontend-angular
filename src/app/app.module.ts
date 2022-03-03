@@ -9,6 +9,7 @@ import { SharedModule } from '@app/shared';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginUserComponent, RegisterUserComponent } from '@app/pages';
 import { MaterialUiModule } from './shared/modules/material-ui/material-ui.module';
+import { AuthGuard } from '@app/core/helpers';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,7 @@ import { MaterialUiModule } from './shared/modules/material-ui/material-ui.modul
     FormsModule
 
   ],
-  providers: [],
+  providers: [AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
