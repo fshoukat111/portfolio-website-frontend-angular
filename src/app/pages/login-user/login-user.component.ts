@@ -24,19 +24,10 @@ export class LoginUserComponent implements OnInit {
 
 
   ngOnInit(): void {
+
   }
 
-  public loginUser(){
-    let roleUser =  this.localStroage.get("Role");
-    if(roleUser === selectedUser.admin){
-      this.router.navigate([AppRotues.admin]);
-    }
-    else{
-      this.router.navigate([AppRotues.portfolios])
-    }
+  public loginUser():void{
     this.userStore.dispatch(LoadPostLoginUser({email:this.user.email,password:this.user.password}));
-
-
   }
-
 }

@@ -16,7 +16,7 @@ export class RegisterUserComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  public registerUser(){
+  public registerUser():void{
     this.userStore.dispatch(LoadPostRegisterUser({user:this.user}));
   }
 }
