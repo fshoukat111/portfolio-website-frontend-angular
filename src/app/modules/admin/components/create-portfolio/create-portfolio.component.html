@@ -1,0 +1,57 @@
+<div class="form-class">
+    <mat-card>
+        <mat-card-title>Create Portfolio</mat-card-title>
+        <mat-card-content>
+            <form autocomplete="off">
+                <div>
+                    <mat-form-field appearance="fill">
+                        <mat-label class="label-title">Category</mat-label>
+                        <mat-select multiple [ngModel]="selectedCategory" name="category" (change)="onCategorySelection()" >
+                            <mat-select-trigger>
+                                <span class="example-additional-selection"> x </span>
+                            </mat-select-trigger>
+                            <mat-option *ngFor="let category of categoryList" [value]="category.categoryTitle">
+                                {{ category.categoryTitle }}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div>
+                    <mat-form-field appearance="legacy">
+                        <mat-label class="label-title">Title:</mat-label>
+                        <input matInput type="text" name="title" [(ngModel)]="portfolio.portfolioTitle"
+                            placeholder="Title" />
+                        <mat-icon matSuffix>mail_outline</mat-icon>
+                        <!-- <mat-error *ngIf="(form.get('email')).errors?.required">Email is required</mat-error>
+                      <mat-error *ngIf="(form.get('email')).errors?.pattern">Please enter valid email</mat-error> -->
+                    </mat-form-field>
+                </div>
+
+                <div>
+                    <p>
+                        <mat-form-field class="example-full-width" appearance="fill">
+                            <mat-label class="label-title">Description</mat-label>
+                            <textarea matInput placeholder="Decription" name="Decription"
+                                [(ngModel)]="portfolio.portfolioDescription"></textarea>
+                        </mat-form-field>
+                    </p>
+                </div>
+                <div>
+                    <mat-form-field appearance="legacy">
+                        <mat-label class="label-title">Url:</mat-label>
+                        <input matInput type="text" name="url" [(ngModel)]="portfolio.portfolioUrl" placeholder="url" />
+                        <mat-icon matSuffix>domain icon</mat-icon>
+                        <!-- <mat-error *ngIf="(form.get('email')).errors?.required">Email is required</mat-error>
+                      <mat-error *ngIf="(form.get('email')).errors?.pattern">Please enter valid email</mat-error> -->
+                    </mat-form-field>
+                </div>
+
+                <div class="form-button">
+                    <button mat-raised-button color="primary" type="button" (click)="addPortfolio()">
+                        Create
+                    </button>
+                </div>
+            </form>
+        </mat-card-content>
+    </mat-card>
+</div>
