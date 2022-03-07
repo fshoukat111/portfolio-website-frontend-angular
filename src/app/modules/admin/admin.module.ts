@@ -1,17 +1,23 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
+import { MaterialUiModule } from '@app/shared/modules/material-ui/material-ui.module';
+
 import { AdminRoutingModule } from './admin-routing.module';
-import { AddPortfolioComponent } from './pages/add-portfolio/add-portfolio.component';
+import { AdminComponent } from '@app/modules/admin/admin.component';
+import { CreatePortfolioComponent } from '@app/modules/admin/pages';
 
 
 @NgModule({
   declarations: [
-    AddPortfolioComponent
+    CreatePortfolioComponent,
+    AdminComponent
   ],
   imports: [
     CommonModule,
-    AdminRoutingModule
+    AdminRoutingModule,
+    MaterialUiModule
+
   ]
 })
 export class AdminModule { }
