@@ -1,6 +1,8 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
-import { MatSidenav } from '@angular/material/sidenav';
-import {BreakpointObserver} from '@angular/cdk/layout';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { Category, Portfolio } from '@app/shared/models';
+import { select, Store } from '@ngrx/store';
+import { LoadCategoryList, LoadCreatePortfolio } from './stores/admin.actions';
+import { getCategoryListSelector } from './stores/admin.selectors';
 
 @Component({
   selector: 'app-admin',
@@ -8,16 +10,18 @@ import {BreakpointObserver} from '@angular/cdk/layout';
   styleUrls: ['./admin.component.sass']
 })
 export class AdminComponent implements OnInit {
-  @ViewChild('sidenav') sidenav: MatSidenav;
   isExpanded = true;
   showSubmenu: boolean = false;
   isShowing = false;
   showSubSubMenu: boolean = false;
+  tab: number;
+  selectedComponent: {}
+  public categoryList:Category[] = [];
 
-
-  constructor(private screenObserver:BreakpointObserver) { }
+  constructor(private adminStore: Store) {}
 
   ngOnInit(): void {
+    this.categoryListDispatch();
   }
 
   mouseenter() {
@@ -32,5 +36,33 @@ export class AdminComponent implements OnInit {
     }
   }
 
+  /**
+   * select sidebar tab
+   * @param name 
+   */
+  selectTab(name: number) {
+    this.tab = name;
+  }
+
+
+  categoryListDispatch():void{
+    this.adminStore.dispatch(LoadCategoryList());
+    this.getCategoryList();
+  }
+
+  getCategoryList():void{
+    this.adminStore.pipe(select(getCategoryListSelector)).subscribe((categories:Category[]) => {
+      if(categories && categories.length){
+        this.categoryList = categories;
+      }
+    });
+  }
+
+  /**
+   * parent funcation for create portfolio
+   */
+  createPortfolio(adminPortfolio: Portfolio) {
+    this.adminStore.dispatch(LoadCreatePortfolio({ adminPortfolio: adminPortfolio }));
+  }
 
 }

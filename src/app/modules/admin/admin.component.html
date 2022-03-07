@@ -32,12 +32,12 @@
         [ngClass]="{ expanded: showSubmenu }"
         *ngIf="isShowing || isExpanded"
       >
-        <a mat-list-item href="..." class="name-title">
+        <a mat-list-item (click)="selectTab(1)" class="name-title">
           <mat-icon mat-list-icon>folder_open</mat-icon>
           List
         </a>
-        <a mat-list-item href="..." class="name-title">
-          <mat-icon mat-list-icon>add</mat-icon>
+        <a mat-list-item (click)="selectTab(2)" class="name-title">
+          <mat-icon mat-list-icon >add</mat-icon>
           Add
         </a>
         <!-- <mat-list-item
@@ -69,5 +69,7 @@
     </mat-nav-list>
   </mat-sidenav>
 
-  <div class="example-sidenav-content">Main content that resizes properly</div>
+  <div class="example-sidenav-content" [ngSwitch]="tab">
+  <app-create-portfolio *ngSwitchCase="2" (createPortfolio)="createPortfolio($event)" [categoryList]="categoryList"></app-create-portfolio>
+  </div>
 </mat-sidenav-container>

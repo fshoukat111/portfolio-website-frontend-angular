@@ -1,15 +1,15 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CoreModule } from '@app/core';
 import { SharedModule } from '@app/shared';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginUserComponent, RegisterUserComponent } from '@app/pages';
-import { MaterialUiModule } from './shared/modules/material-ui/material-ui.module';
 import { AuthGuard } from '@app/core/helpers';
+import { MaterialUiModule } from '@app/shared/modules';
 
 @NgModule({
   declarations: [
@@ -27,7 +27,9 @@ import { AuthGuard } from '@app/core/helpers';
     FormsModule
 
   ],
-  providers: [AuthGuard],
+  providers: [
+    AuthGuard,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
