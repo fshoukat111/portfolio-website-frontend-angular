@@ -1,11 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Actions, ofType, createEffect } from '@ngrx/effects';
 import { map, catchError, switchMap, mergeMap } from 'rxjs/operators';
+import { CookieService } from 'ngx-cookie-service';
+
 import * as userAction from '@app/shared/stores/users/user.actions';
 import { of } from 'rxjs';
 import { UsersService } from '@app/core/services/users/users.service';
-import { Auth, Users } from '@app/shared/models/users/users.model';
 import { LocalStorageService } from '@app/core/services/local-storage.service';
+import { Users } from '@app/shared/models';
 
 
 @Injectable()
@@ -14,6 +16,7 @@ export class UserSectionEffects {
     private actions$: Actions,
     private userService: UsersService,
     private localStorage: LocalStorageService,
+    private cookieService: CookieService,
   ) { }
 
   /**
@@ -24,8 +27,8 @@ export class UserSectionEffects {
   getRegisterUser$ = createEffect(() =>
     this.actions$.pipe(ofType(userAction.LoadPostRegisterUser),
       switchMap((action) => {
-        return this.userService.registerUser(action.user).pipe(map((auth: Auth) => {
-          return userAction.LoadPostRegisterUserSuccess({ auth });
+        return this.userService.registerUser(action.user).pipe(map((user: Users) => {
+          return userAction.LoadPostRegisterUserSuccess({ user });
         }),
           catchError((error) => {
             // this.messageService.add({
@@ -48,10 +51,12 @@ export class UserSectionEffects {
   getLoginUser$ = createEffect(() =>
     this.actions$.pipe(ofType(userAction.LoadPostLoginUser),
       switchMap((action) => {
-        return this.userService.loginUser(action.email, action.password).pipe(map((auth: Auth) => {
-           this.localStorage.set("role",auth.user.role)
-           this.localStorage.set("token",auth.token)
-          return userAction.LoadPostLoginUserSuccess({ auth });
+        return this.userService.loginUser(action.email, action.password).pipe(map((user: any) => {
+          console.log("user",user)
+          //  this.localStorage.set("role",user.role)
+           this.localStorage.set("token",user.user.token);
+           this.localStorage.set("role",user.user.role);
+          return userAction.LoadPostLoginUserSuccess({ user });
         }),
           catchError((error) => {
             // this.messageService.add({

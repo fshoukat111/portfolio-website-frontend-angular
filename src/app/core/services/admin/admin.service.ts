@@ -15,32 +15,32 @@ export class AdminService {
 
   getCategoryList(): Observable<Category[]>{
     return this.requestService.get(`${ApiUrl.backendUrl}/${ApiUrl.categories}`);
-
   }
 
   /**
- * 
- * @returns 
- * @param portfolio 
+ *
+ * @returns
+ * @param portfolio
  */
   createCategoryByAdmin(category: Category): Observable<Category> {
     return this.requestService.post(`${ApiUrl.backendUrl}/${ApiUrl.adminCategoryCreate}`, { category });
   }
 
   /**
-   * 
-   * @returns 
-   * @param portfolio 
+   *
+   * @returns
+   * @param portfolio
    */
   createPortfolioByAdmin(portfolio: Portfolio): Observable<Portfolio> {
-    return this.requestService.post(`${ApiUrl.backendUrl}/${ApiUrl.adminPortfolioCreate}`, { portfolio });
+    return this.requestService.post(`http://localhost:5000/api/v1/${ApiUrl.adminPortfolioCreate}`, { portfolio });
+    // return this.requestService.post(`${ApiUrl.backendUrl}/${ApiUrl.adminPortfolioCreate}`, { portfolio });
   }
 
   /**
-   * 
-   * @returns 
-   * @param portfolio 
-   * @param _id 
+   *
+   * @returns
+   * @param portfolio
+   * @param _id
    */
   updatePortfolioByAdmin(_id: string, portfolio: Portfolio): Observable<Portfolio> {
     return this.requestService.put(``, { portfolio });
@@ -48,7 +48,7 @@ export class AdminService {
 
   /**
    * delete portfolio by admin
-   * @returns 
+   * @returns
    * @param _id
    */
   deletePortfolio(_id: string): Observable<Portfolio[]> {
