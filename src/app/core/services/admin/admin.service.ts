@@ -13,7 +13,7 @@ export class AdminService {
   constructor(private requestService: RequestService) { }
 
 
-  getCategoryList(): Observable<Category[]>{
+  getCategoryList(): Observable<Category[]> {
     return this.requestService.get(`${ApiUrl.backendUrl}/${ApiUrl.categories}`);
   }
 
