@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { RequestService } from '@app/core/services';
 import { Observable } from 'rxjs';
-import { Portfolio } from '@app/shared/models/portfolios/portfolios';
+import { Portfolio } from '@app/shared/models/portfolios/portfolios.model';
 import { ApiUrl } from '@app/shared/constants/resources-refrance';
 @Injectable({
   providedIn: 'root'

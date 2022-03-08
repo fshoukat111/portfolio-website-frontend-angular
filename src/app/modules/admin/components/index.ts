@@ -1,0 +1,1 @@
+export * from '@app/modules/admin/components/create-portfolio/create-portfolio.component';

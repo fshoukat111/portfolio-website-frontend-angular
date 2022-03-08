@@ -10,9 +10,9 @@ const createUserSectionReducer = createReducer(initialUserState,
     user
   })),
 
-  on(userAction.LoadPostRegisterUserSuccess, (state, { auth }) => ({
+  on(userAction.LoadPostRegisterUserSuccess, (state, { user }) => ({
     ...state,
-    auth
+    user
   })),
 
   on(userAction.LoadPostRegisterUserFail, (state, { error }) => ({
@@ -21,14 +21,14 @@ const createUserSectionReducer = createReducer(initialUserState,
   })),
 
   //Login User Reducers
-  on(userAction.LoadPostLoginUser, (state, { email,password }) => ({
+  on(userAction.LoadPostLoginUser, (state, { email, password }) => ({
     ...state,
-    email,password
+    email, password
   })),
 
-  on(userAction.LoadPostLoginUserSuccess, (state, { auth }) => ({
+  on(userAction.LoadPostLoginUserSuccess, (state, { user }) => ({
     ...state,
-    auth
+    user
   })),
 
   on(userAction.LoadPostLoginUserFail, (state, { error }) => ({

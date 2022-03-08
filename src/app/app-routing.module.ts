@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AppRotues } from '@app/shared/constants/app.routes'
-import { AuthGuard } from './core/helpers';
+import { AuthGuard } from '@app/core/helpers';
 import { LoginUserComponent, RegisterUserComponent } from './pages';
 import { selectedUser } from './shared/enums/selected.user';
 const routes: Routes = [

@@ -1,0 +1,1 @@
+export * from '@app/shared/modules/material-ui/material-ui.module';
