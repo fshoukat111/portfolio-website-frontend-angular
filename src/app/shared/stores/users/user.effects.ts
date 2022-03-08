@@ -10,13 +10,22 @@ import { LocalStorageService } from '@app/core/services/local-storage.service';
 import { Users } from '@app/shared/models';
 
 
+
 @Injectable()
 export class UserSectionEffects {
   constructor(
     private actions$: Actions,
     private userService: UsersService,
+<<<<<<< Updated upstream
     private localStorage: LocalStorageService,
+<<<<<<< Updated upstream
+=======
+>>>>>>> Stashed changes
     private cookieService: CookieService,
+=======
+
+
+>>>>>>> Stashed changes
   ) { }
 
   /**
