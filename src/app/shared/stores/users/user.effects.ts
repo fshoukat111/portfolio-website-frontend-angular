@@ -7,12 +7,8 @@ import * as userAction from '@app/shared/stores/users/user.actions';
 import { of } from 'rxjs';
 import { UsersService } from '@app/core/services/users/users.service';
 import { LocalStorageService } from '@app/core/services/local-storage.service';
-<<<<<<< Updated upstream
 import { Users } from '@app/shared/models';
-=======
-import { CookieService } from 'ngx-cookie-service';
 
->>>>>>> Stashed changes
 
 
 @Injectable()
@@ -22,9 +18,14 @@ export class UserSectionEffects {
     private userService: UsersService,
 <<<<<<< Updated upstream
     private localStorage: LocalStorageService,
+<<<<<<< Updated upstream
 =======
 >>>>>>> Stashed changes
     private cookieService: CookieService,
+=======
+
+
+>>>>>>> Stashed changes
   ) { }
 
   /**
