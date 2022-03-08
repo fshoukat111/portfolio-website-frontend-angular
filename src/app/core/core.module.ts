@@ -38,8 +38,5 @@ import { JwtInterceptor } from './helpers';
       logOnly: false, // Restrict extension to log-only mode
     }),
   ],
-  providers: [
-    {provide:HTTP_INTERCEPTORS,useClass:JwtInterceptor,multi:true}
-  ],
 })
 export class CoreModule { }

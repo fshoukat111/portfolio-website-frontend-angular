@@ -11,13 +11,13 @@ import { CookieService } from 'ngx-cookie-service';
 })
 export class AuthGuard implements CanActivate {
   constructor(
-    private localStorageService: LocalStorageService,
+    private cookieService: CookieService,
     private router: Router
   ) { }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    const token = this.localStorageService.get("token");
-    const role = this.localStorageService.get("role");
+    const token = this.cookieService.get("token");
+    const role = this.cookieService.get("role");
     if (!token) {
       this.router.navigate([`${AppRotues.login}`]);
       return false;
