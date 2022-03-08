@@ -2,8 +2,9 @@ import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { LocalStorageService } from '@app/core/services';
 import { AppRotues } from '@app/shared/constants/app.routes';
-import { selectedUser } from '@app/shared/enums/selected.user';
 import { Observable } from 'rxjs';
+import { CookieService } from 'ngx-cookie-service';
+
 
 @Injectable({
   providedIn: 'root'
