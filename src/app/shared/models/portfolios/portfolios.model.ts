@@ -6,4 +6,5 @@ export class Portfolio {
     portfolioDescription?: string;
     portfolioUrl?: string;
     categories?: Category[];
+    portfolioImages?: [];
 }

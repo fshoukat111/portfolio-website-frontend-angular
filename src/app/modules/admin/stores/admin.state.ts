@@ -10,6 +10,6 @@ export interface IAdminState {
 
 /** Initial state for Tab store. */
 export const initialAdminState: IAdminState = {
-    adminPortfolio:{},
+    adminPortfolio:new Portfolio(),
     categoryList:[],
 };
