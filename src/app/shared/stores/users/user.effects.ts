@@ -16,16 +16,7 @@ export class UserSectionEffects {
   constructor(
     private actions$: Actions,
     private userService: UsersService,
-<<<<<<< Updated upstream
     private localStorage: LocalStorageService,
-<<<<<<< Updated upstream
-=======
->>>>>>> Stashed changes
-    private cookieService: CookieService,
-=======
-
-
->>>>>>> Stashed changes
   ) { }
 
   /**
