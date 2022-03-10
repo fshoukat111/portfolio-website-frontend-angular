@@ -6,11 +6,13 @@
                 <div>
                     <mat-form-field appearance="fill">
                         <mat-label class="label-title">Category</mat-label>
-                        <mat-select multiple [ngModel]="selectedCategory" name="category" (change)="onCategorySelection()" >
+                        <mat-select multiple [(ngModel)]="portfolio.categories" name="category" (change)="onCategorySelection()" >
                             <mat-select-trigger>
-                                <span class="example-additional-selection"> x </span>
+                                <span class="example-additional-selection">
+                                    {{portfolio.categories}}
+                                </span>
                             </mat-select-trigger>
-                            <mat-option *ngFor="let category of categoryList" [value]="category.categoryTitle">
+                            <mat-option *ngFor="let category of categoryList" [value]="category._id">
                                 {{ category.categoryTitle }}
                             </mat-option>
                         </mat-select>
