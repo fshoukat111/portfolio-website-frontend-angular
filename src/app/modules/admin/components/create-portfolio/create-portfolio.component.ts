@@ -22,6 +22,7 @@ export class CreatePortfolioComponent implements OnInit {
    * child funcation for create portfolio
    */
   public addPortfolio():void{
+    console.log("create ",this.portfolio)
     this.createPortfolio.emit(this.portfolio)
   }
 

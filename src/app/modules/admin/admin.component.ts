@@ -62,6 +62,7 @@ export class AdminComponent implements OnInit {
    * parent funcation for create portfolio
    */
   createPortfolio(adminPortfolio: Portfolio) {
+    console.log("adminPortfolio",adminPortfolio)
     this.adminStore.dispatch(LoadCreatePortfolio({ adminPortfolio: adminPortfolio }));
   }
 
