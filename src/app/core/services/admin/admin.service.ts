@@ -33,7 +33,7 @@ export class AdminService {
    * @param portfolio
    */
   createPortfolioByAdmin(adminPortfolio: Portfolio): Observable<Portfolio> {
-    return this.requestService.post(`http://localhost:5000/api/v1/${ApiUrl.adminPortfolioCreate}`, { adminPortfolio });
+    return this.requestService.post(`http://localhost:5000/api/v1/${ApiUrl.adminPortfolioCreate}`, adminPortfolio );
     // return this.requestService.post(`${ApiUrl.backendUrl}/${ApiUrl.adminPortfolioCreate}`, { portfolio });
   }
 
