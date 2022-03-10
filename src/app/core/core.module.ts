@@ -7,6 +7,9 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { userSectionReducer } from '@app/shared/stores/users/user.reducers';
 import { UserSectionEffects } from '@app/shared/stores/users/user.effects';
+import { AdminSectionEffects } from '@app/modules/admin/stores/admin.effects';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { adminSectionReducer } from '@app/modules/admin/stores/admin.reducers';
 
 @NgModule({
   declarations: [],
@@ -14,7 +17,8 @@ import { UserSectionEffects } from '@app/shared/stores/users/user.effects';
     CommonModule,
     HttpClientModule,
     StoreModule.forRoot({
-      users: userSectionReducer
+      users: userSectionReducer,
+      admin: adminSectionReducer
     },
     {
       runtimeChecks: {
