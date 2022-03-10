@@ -23,7 +23,7 @@ export class AdminService {
  * @param portfolio
  */
   createCategoryByAdmin(category: Category): Observable<Category> {
-    return this.requestService.post(`${ApiUrl.backendUrl}/${ApiUrl.adminCategoryCreate}`, { category });
+    return this.requestService.post(`${ApiUrl.backendUrl}/${ApiUrl.adminCategoryCreate}`, category);
   }
 
   /**
