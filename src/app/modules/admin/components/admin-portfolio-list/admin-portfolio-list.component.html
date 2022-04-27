@@ -1,0 +1,44 @@
+<mat-table [dataSource]="portfolioList" class="mat-elevation-z8">
+  <!-- Position Column -->
+  <ng-container matColumnDef="id">
+    <mat-header-cell *matHeaderCellDef> Id </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element?._id}} </mat-cell>
+  </ng-container>
+ 
+  <!-- Position Column -->
+  <ng-container matColumnDef="title">
+    <mat-header-cell *matHeaderCellDef> Title </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element?.portfolioTitle}} </mat-cell>
+  </ng-container>
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="description">
+    <mat-header-cell *matHeaderCellDef> Description </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element?.portfolioDescription}} </mat-cell>
+  </ng-container>
+
+  <!-- Weight Column -->
+  <ng-container matColumnDef="url">
+    <mat-header-cell *matHeaderCellDef> Url </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element?.portfolioUrl}} </mat-cell>
+  </ng-container>
+
+  <!-- Weight Column -->
+  <ng-container matColumnDef="action">
+    <mat-header-cell *matHeaderCellDef> Action </mat-header-cell>
+    <mat-cell *matCellDef="let element">
+      <button (click)="detailPageRoute(element)">Detail</button>
+    </mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+</mat-table>
+<mat-paginator
+[length]="page"
+showFirstLastButtons
+#paginator
+(page)="onPageChange($event)"
+[pageSizeOptions]="[2, 4, 6, 8]"
+aria-label="Select page">
+</mat-paginator>

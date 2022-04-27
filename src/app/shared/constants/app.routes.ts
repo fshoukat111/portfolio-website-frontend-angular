@@ -4,4 +4,5 @@ export const AppRotues = {
   login:'login',
   register:'register',
   portfolios:'portfolios',
+  portfolioDetail:'portfolio',
 }

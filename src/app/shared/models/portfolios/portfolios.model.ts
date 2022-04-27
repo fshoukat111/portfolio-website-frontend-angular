@@ -1,10 +1,21 @@
 import { Category } from "@app/shared/models";
 
+export class allPortfolio {
+    resultPerPage?:number;
+    portfolioCount?:number;
+    portfolios?:Portfolio[];
+};
+
 export class Portfolio {
     _id?: string;
     portfolioTitle?: string;
     portfolioDescription?: string;
     portfolioUrl?: string;
     categories?: Category[];
-    portfolioImages?: [];
-}
+    images?: Images[];
+};
+
+export class Images {
+    publicId:string;
+    imageUrl:string;
+};

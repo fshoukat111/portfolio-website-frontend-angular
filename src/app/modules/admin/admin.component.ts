@@ -1,8 +1,16 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { Category, Portfolio } from '@app/shared/models';
+import { Component, OnInit } from '@angular/core';
 import { select, Store } from '@ngrx/store';
-import { LoadCategoryList, LoadCreatePortfolio } from './stores/admin.actions';
-import { getCategoryListSelector } from './stores/admin.selectors';
+import { Subscription } from 'rxjs';
+import { Category, Portfolio } from '@app/shared/models';
+import {
+  LoadCategoryList,
+  LoadCreatePortfolio,
+  LoadPortfolioList,
+  getCategoryListSelector,
+  getPortfolioListSelector
+}
+  from '@app/modules/admin/store';
+
 
 @Component({
   selector: 'app-admin',
@@ -10,60 +18,107 @@ import { getCategoryListSelector } from './stores/admin.selectors';
   styleUrls: ['./admin.component.sass']
 })
 export class AdminComponent implements OnInit {
-  isExpanded = true;
-  showSubmenu: boolean = false;
-  isShowing = false;
-  showSubSubMenu: boolean = false;
-  tab: number;
-  selectedComponent: {}
-  public categoryList:Category[] = [];
+  public isExpanded = true;
+  public isShowing = true;
+  public tab: number;
+  public categoryList: Category[] = [];
+  public portfolioList: Portfolio[] = [];
+  public page: number = 1;
+  private subscriptions$: Subscription[] = [];
 
-  constructor(private adminStore: Store) {}
+  constructor(private adminStore: Store) { }
 
   ngOnInit(): void {
     this.categoryListDispatch();
+    this.portfolioListDispatch(this.page);
   }
 
-  mouseenter() {
-    if (!this.isExpanded) {
+  /**
+ * select sidebar tab using child admin-sidebar component event
+ * @param name 
+ */
+  public selectTab(name: number) {
+    this.tab = name;
+  }
+
+  public mouseenter(expanded): void {
+    if (!expanded) {
       this.isShowing = true;
     }
   }
 
-  mouseleave() {
-    if (!this.isExpanded) {
+  public mouseleave(expanded): void {
+    if (!expanded) {
       this.isShowing = false;
     }
   }
 
+
   /**
-   * select sidebar tab
-   * @param name 
+   * Dispatch Category List Action
    */
-  selectTab(name: number) {
-    this.tab = name;
-  }
-
-
-  categoryListDispatch():void{
+  private categoryListDispatch(): void {
     this.adminStore.dispatch(LoadCategoryList());
     this.getCategoryList();
   }
 
-  getCategoryList():void{
-    this.adminStore.pipe(select(getCategoryListSelector)).subscribe((categories:Category[]) => {
-      if(categories && categories.length){
-        this.categoryList = categories;
-      }
-    });
+  /**
+ * Get Category List form Admin Store
+ */
+  private getCategoryList(): void {
+    this.subscriptions$.push(
+      this.adminStore.pipe(select(getCategoryListSelector)).subscribe((categories: Category[]) => {
+        if (categories && categories.length) {
+          this.categoryList = categories;
+        }
+      })
+    )
+  }
+
+
+  /**
+   * Dispatch Portfolio List Action
+   */
+  public portfolioListDispatch(pageNumber: number): void {
+    this.adminStore.dispatch(LoadPortfolioList({ pageNumber: this.page }));
+    this.getPortfolioList();
+
+
+
+  }
+
+  /**
+   * Get Portfolio List form Admin Store
+   */
+  private getPortfolioList(): void {
+    this.subscriptions$.push(
+      this.adminStore.pipe(select(getPortfolioListSelector)).subscribe((portfolio: any) => {
+        if (portfolio.portfolios && portfolio.portfolios.length) {
+          this.portfolioList = portfolio.portfolios;
+          this.page = portfolio.portfolioCount;
+        }
+      })
+    );
   }
 
   /**
    * parent funcation for create portfolio
    */
-  createPortfolio(adminPortfolio: Portfolio) {
-    console.log("adminPortfolio",adminPortfolio)
+  public createPortfolio(adminPortfolio: Portfolio): void {
     this.adminStore.dispatch(LoadCreatePortfolio({ adminPortfolio: adminPortfolio }));
   }
 
+  public pageChange(event):void {
+    this.page = event.pageIndex;
+    this.page += 1;
+    this.portfolioListDispatch(this.page)
+  }
+
+  ngOnDestroy():void{
+    this.subscriptions$.forEach(subscribe => {
+      if (subscribe) {
+        subscribe.unsubscribe();
+      }
+    });
+  }
 }
