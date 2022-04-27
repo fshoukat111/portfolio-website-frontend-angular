@@ -1,0 +1,75 @@
+<div class="form-class">
+    <mat-card>
+        <mat-card-title>Portfolio Detail</mat-card-title>
+        <mat-card-content>
+            <form autocomplete="off" #portfolioForm="ngForm">
+                <div>
+                    <mat-form-field appearance="fill">
+                        <mat-label class="label-title">Category</mat-label>
+                        <mat-select multiple name="category" matNativeControl [(ngModel)]="portfolioDetail.categories">
+                            <mat-select-trigger>
+                                <span class="example-additional-selection">
+                                    {{portfolioDetail.categories}}
+                                </span>
+                            </mat-select-trigger>
+                            <mat-option *ngFor="let category of categoryList" [value]="category.categoryTitle">
+                                {{category.categoryTitle}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div>
+                    <mat-form-field appearance="legacy">
+                        <mat-label class="label-title">Title:</mat-label>
+                        <input matInput type="text" name="title" placeholder="Title" class="text-of-form"
+                            value="{{portfolioDetail.portfolioTitle}}" [(ngModel)]="portfolioDetail.portfolioTitle" />
+                        <mat-icon matSuffix>mail_outline</mat-icon>
+                        <!-- <mat-error *ngIf="(form.get('email')).errors?.required">Email is required</mat-error>
+                      <mat-error *ngIf="(form.get('email')).errors?.pattern">Please enter valid email</mat-error> -->
+                    </mat-form-field>
+                </div>
+
+                <div>
+                    <p>
+                        <mat-form-field class="example-full-width" appearance="fill">
+                            <mat-label class="label-title">Description</mat-label>
+                            <textarea matInput placeholder="Decription" name="Decription" class="text-of-form"
+                                value="{{portfolioDetail.portfolioDescription}}"
+                                [(ngModel)]="portfolioDetail.portfolioDescription"></textarea>
+                        </mat-form-field>
+                    </p>
+                </div>
+                <div>
+                    <mat-form-field appearance="legacy">
+                        <mat-label class="label-title">Url:</mat-label>
+                        <input matInput type="url" name="url" value="{{portfolioDetail.portfolioUrl}}"
+                            class="text-of-form" [(ngModel)]="portfolioDetail.portfolioUrl" placeholder="url" />
+                        <mat-icon matSuffix>domain icon</mat-icon>
+                        <!-- <mat-error *ngIf="(form.get('email')).errors?.required">Email is required</mat-error>
+                      <mat-error *ngIf="(form.get('email')).errors?.pattern">Please enter valid email</mat-error> -->
+                    </mat-form-field>
+                </div>
+                <div>
+                    <mat-form-field>
+                        <ngx-mat-file-input>
+                            <!-- <mat-icon ngxMatFileInputIcon>folder</mat-icon> -->
+                        </ngx-mat-file-input>
+                    </mat-form-field>
+                </div>
+                <div class="form-button">
+                    <button mat-raised-button color="primary" type="button"
+                        (click)="updatePortfolioById(portfolioDetail._id,portfolioDetail)">
+                        Update
+                    </button>
+                </div>
+                <div class="form-button">
+
+                    <button mat-raised-button color="warn" type="button"
+                        (click)="deletePortfolioById(portfolioDetail._id)">
+                        Delete
+                    </button>
+                </div>
+            </form>
+        </mat-card-content>
+    </mat-card>
+</div>

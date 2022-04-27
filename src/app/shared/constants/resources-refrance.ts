@@ -8,6 +8,7 @@ export class ApiUrl {
     static login = 'login';
     static logout = 'logout';
     static categories = 'categories';
+    static category = 'category';
     static adminCategoryCreate = `${this.admin}/category/create`;
     static portfolio = 'portfolio';
     static adminPortfolioCreate = `${this.admin}/${this.portfolio}/create`;

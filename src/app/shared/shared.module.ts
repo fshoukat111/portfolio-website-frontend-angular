@@ -8,7 +8,6 @@ import { ProjectsSectionModule } from '@app/modules';
  const SHARED_MODULES = [
   CommonModule,
   ProjectsSectionModule,
-
 ]
 
 /**
