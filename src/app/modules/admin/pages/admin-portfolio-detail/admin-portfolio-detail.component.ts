@@ -14,7 +14,7 @@ import {
 } from '@app/modules/admin/store';
 import { AppRotues } from '@app/shared/constants/app.routes';
 import { MatDialog } from '@angular/material/dialog';
-import { AdminConfirmDialogComponent } from '@app/modules/admin/components';
+import { AdminConfirmDialogComponent } from '../../components/admin-confirm-dialog/admin-confirm-dialog.component';
 
 @Component({
   selector: 'app-admin-portfolio-detail',
