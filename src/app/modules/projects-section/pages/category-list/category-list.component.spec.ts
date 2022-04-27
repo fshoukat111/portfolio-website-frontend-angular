@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CreatePortfolioComponent } from './create-portfolio.component';
+import { CategoryListComponent } from './category-list.component';
 
-describe('CreatePortfolioComponent', () => {
-  let component: CreatePortfolioComponent;
-  let fixture: ComponentFixture<CreatePortfolioComponent>;
+describe('CategoryListComponent', () => {
+  let component: CategoryListComponent;
+  let fixture: ComponentFixture<CategoryListComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CreatePortfolioComponent ]
+      declarations: [ CategoryListComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CreatePortfolioComponent);
+    fixture = TestBed.createComponent(CategoryListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

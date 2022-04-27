@@ -2,17 +2,17 @@
     <mat-card>
         <mat-card-title>Create Portfolio</mat-card-title>
         <mat-card-content>
-            <form autocomplete="off">
+            <form autocomplete="off" #portfolioForm="ngForm">
                 <div>
                     <mat-form-field appearance="fill">
                         <mat-label class="label-title">Category</mat-label>
-                        <mat-select multiple [(ngModel)]="portfolio.categories" name="category" (change)="onCategorySelection()" >
+                        <mat-select multiple [(ngModel)]="portfolio.categories" name="category">
                             <mat-select-trigger>
                                 <span class="example-additional-selection">
                                     {{portfolio.categories}}
                                 </span>
                             </mat-select-trigger>
-                            <mat-option *ngFor="let category of categoryList" [value]="category._id">
+                            <mat-option *ngFor="let category of categoryList" [value]="category.categoryTitle">
                                 {{ category.categoryTitle }}
                             </mat-option>
                         </mat-select>
@@ -47,9 +47,12 @@
                       <mat-error *ngIf="(form.get('email')).errors?.pattern">Please enter valid email</mat-error> -->
                     </mat-form-field>
                 </div>
-
+                <div>
+                    <input type="file" name="file" [(ngModel)]="portfolio.images" multiple />
+                </div>
                 <div class="form-button">
-                    <button mat-raised-button color="primary" type="button" (click)="addPortfolio()">
+                    <button mat-raised-button color="primary" type="button"
+                        (click)="addPortfolio(); portfolioForm.reset()">
                         Create
                     </button>
                 </div>

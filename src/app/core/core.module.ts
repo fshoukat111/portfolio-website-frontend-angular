@@ -1,15 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule  } from '@angular/common/http';
-
-
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
-import { userSectionReducer } from '@app/shared/stores/users/user.reducers';
-import { UserSectionEffects } from '@app/shared/stores/users/user.effects';
-import { AdminSectionEffects } from '@app/modules/admin/stores/admin.effects';
-import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { adminSectionReducer } from '@app/modules/admin/stores/admin.reducers';
+
+import { userSectionReducer,UserSectionEffects } from '@app/shared/stores';
+import { adminSectionReducer,AdminSectionEffects } from '@app/modules/admin/store';
 
 @NgModule({
   declarations: [],

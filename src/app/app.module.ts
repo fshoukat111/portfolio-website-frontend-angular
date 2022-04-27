@@ -8,9 +8,10 @@ import { CoreModule } from '@app/core';
 import { SharedModule } from '@app/shared';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginUserComponent, RegisterUserComponent } from '@app/pages';
-import { AuthGuard, JwtInterceptor } from '@app/core/helpers';
+import { AuthGuard, JwtInterceptor, RoleGuard } from '@app/core/helpers';
 import { MaterialUiModule } from '@app/shared/modules';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { ToastrModule, ToastrService } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -25,12 +26,16 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
     SharedModule,
     BrowserAnimationsModule,
     MaterialUiModule,
-    FormsModule
+    FormsModule,
+    ToastrModule
+
 
   ],
   providers: [
     {provide:HTTP_INTERCEPTORS,useClass:JwtInterceptor,multi:true},
     AuthGuard,
+    RoleGuard,
+    ToastrService
 
   ],
   bootstrap: [AppComponent]
