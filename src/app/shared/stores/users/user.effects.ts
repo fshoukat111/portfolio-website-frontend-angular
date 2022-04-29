@@ -8,6 +8,9 @@ import { of } from 'rxjs';
 import { UsersService } from '@app/core/services/users/users.service';
 import { LocalStorageService } from '@app/core/services/local-storage.service';
 import { Users } from '@app/shared/models';
+import { selectedUser } from '@app/shared/enums/selected.user';
+import { AppRotues } from '@app/shared/constants/app.routes';
+import { Router } from '@angular/router';
 
 
 
@@ -17,6 +20,7 @@ export class UserSectionEffects {
     private actions$: Actions,
     private userService: UsersService,
     private localStorage: LocalStorageService,
+    private router: Router,
   ) { }
 
   /**
@@ -28,6 +32,9 @@ export class UserSectionEffects {
     this.actions$.pipe(ofType(userAction.LoadPostRegisterUser),
       switchMap((action) => {
         return this.userService.registerUser(action.user).pipe(map((user: Users) => {
+          if(user){
+            this.router.navigate([`${AppRotues.login}`])
+          }
           return userAction.LoadPostRegisterUserSuccess({ user });
         }),
           catchError((error) => {
@@ -52,8 +59,12 @@ export class UserSectionEffects {
     this.actions$.pipe(ofType(userAction.LoadPostLoginUser),
       switchMap((action) => {
         return this.userService.loginUser(action.email, action.password).pipe(map((user: any) => {
-           this.localStorage.set("token",user.user.token);
-           this.localStorage.set("role",user.user.role);
+          this.localStorage.set("token", user.user.token);
+          this.localStorage.set("role", user.user.role);
+          const role = this.localStorage.get("role");
+          if (role === selectedUser.admin) {
+            this.router.navigate([`${AppRotues.admin}`])
+          }
           return userAction.LoadPostLoginUserSuccess({ user });
         }),
           catchError((error) => {

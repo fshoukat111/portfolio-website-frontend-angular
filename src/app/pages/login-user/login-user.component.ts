@@ -14,21 +14,30 @@ import { LoadPostLoginUser } from '@app/shared/stores';
   styleUrls: ['./login-user.component.sass']
 })
 export class LoginUserComponent implements OnInit {
-  public user:Users = new Users();
+  public user: Users = new Users();
 
   constructor(
-    private userStore:Store,
-    private router:Router,
-    private localStroage:LocalStorageService
-    ) { }
-
-
+    private userStore: Store,
+    private router: Router,
+  ) { }
 
   ngOnInit(): void {
-
+    this.currentUser()
   }
 
-  public loginUser():void{
-    this.userStore.dispatch(LoadPostLoginUser({email:this.user.email,password:this.user.password}));
+  /**
+   * Login User Dispach action from user store
+   */
+  public loginUser(): void {
+    this.userStore.dispatch(LoadPostLoginUser({ email: this.user.email, password: this.user.password }));
+  }
+
+  /**
+   * if admin then navigate admin dashboard
+   */
+  public currentUser(): void {
+    if (this.user.role === selectedUser.admin) {
+      this.router.navigate([`${AppRotues.admin}`])
+    }
   }
 }

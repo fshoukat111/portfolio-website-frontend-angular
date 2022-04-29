@@ -3,9 +3,6 @@ import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTr
 import { LocalStorageService } from '@app/core/services';
 import { AppRotues } from '@app/shared/constants/app.routes';
 import { Observable } from 'rxjs';
-import { CookieService } from 'ngx-cookie-service';
-
-
 @Injectable({
   providedIn: 'root'
 })
@@ -17,12 +14,8 @@ export class AuthGuard implements CanActivate {
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     const token = this.localStorageService.get("token");
-    const role = this.localStorageService.get("role");
-    if (!token) {
-      this.router.navigate([`${AppRotues.login}`]);
-      return false;
-    }
-    return true;
+    return token ? true : this.router.navigate([`${AppRotues.login}`]); 
+    
   }
 
 }
