@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { AppRotues } from '@app/shared/constants/app.routes';
-import { Portfolio } from '@app/shared/models';
+import { AllPortfolio, Portfolio } from '@app/shared/models';
 
 
 @Component({
@@ -12,7 +12,7 @@ import { Portfolio } from '@app/shared/models';
 
 
 export class AdminPortfolioListComponent implements OnInit {
-  @Input() portfolioList:Portfolio[] = [];
+  @Input() portfolioList:AllPortfolio[] = [];
   @Input() page:number;
 
   @Output() pageChange = new EventEmitter();
