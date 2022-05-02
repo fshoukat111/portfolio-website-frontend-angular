@@ -1,4 +1,4 @@
 export enum selectedUser {
-  admin = "Admin",
-  user = "User"
+  admin="Admin",
+  user="User"
 }
