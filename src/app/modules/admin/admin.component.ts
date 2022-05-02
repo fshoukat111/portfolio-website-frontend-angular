@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { select, Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
-import { Category, Portfolio } from '@app/shared/models';
+import { AllPortfolio, Category, Portfolio } from '@app/shared/models';
 import {
   LoadCategoryList,
   LoadCreatePortfolio,
@@ -22,7 +22,7 @@ export class AdminComponent implements OnInit {
   public isShowing = true;
   public tab: number;
   public categoryList: Category[] = [];
-  public portfolioList: Portfolio[] = [];
+  public portfolioList: AllPortfolio[] = [];
   public page: number = 1;
   private subscriptions$: Subscription[] = [];
 
