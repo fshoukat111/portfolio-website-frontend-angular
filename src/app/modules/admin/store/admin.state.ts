@@ -1,5 +1,5 @@
 import { Category } from "@app/shared/models";
-import { Portfolio } from "@app/shared/models/portfolios/portfolios.model";
+import { AllPortfolio, Portfolio } from "@app/shared/models/portfolios/portfolios.model";
 
 /** State for Tab store. */
 export interface IAdminState {
@@ -7,7 +7,7 @@ export interface IAdminState {
     adminPortfolioDetail:Portfolio,
     categoryList: Category[],
     category: Category,
-    portfolioList: Portfolio[],
+    portfolioList: AllPortfolio,
     _id:string,
     pageNumber:number
 
@@ -17,7 +17,7 @@ export interface IAdminState {
 export const initialAdminState: IAdminState = {
     adminPortfolio:{},
     categoryList:[],
-    portfolioList:[],
+    portfolioList:{},
     category:{},
     adminPortfolioDetail:{},
     _id:'',
