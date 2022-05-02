@@ -5,7 +5,7 @@ import * as adminAction from '@app/modules/admin/store/admin.actions';
 import { of } from 'rxjs';
 import { LocalStorageService } from '@app/core/services/local-storage.service';
 import { AdminService } from '@app/core/services/admin/admin.service';
-import { Category, Portfolio } from '@app/shared/models';
+import { AllPortfolio, Category, Portfolio } from '@app/shared/models';
 
 
 @Injectable()
@@ -96,7 +96,7 @@ export class AdminSectionEffects {
   getPortfolioList$ = createEffect(() =>
     this.actions$.pipe(ofType(adminAction.LoadPortfolioList),
       switchMap((action) => {
-        return this.adminService.getPortfoliosByAdmin(action.pageNumber).pipe(map((portfolioList: Portfolio[]) => {
+        return this.adminService.getPortfoliosByAdmin(action.pageNumber).pipe(map((portfolioList: AllPortfolio) => {
           return adminAction.LoadPortfolioListSuccess({ portfolioList });
         }),
           catchError((error) => {

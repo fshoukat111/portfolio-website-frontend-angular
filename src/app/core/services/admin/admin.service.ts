@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Portfolio } from '@app/shared/models/portfolios/portfolios.model';
+import { AllPortfolio, Portfolio } from '@app/shared/models/portfolios/portfolios.model';
 import { Observable } from 'rxjs';
 import { RequestService } from '@app/core/services';
 import { ApiUrl } from '@app/shared/constants/resources-refrance';
@@ -49,7 +49,7 @@ export class AdminService {
  * get portfolio list
  * @returns 
  */
-  getPortfoliosByAdmin(pageNumber:number): Observable<Portfolio[]> {
+  getPortfoliosByAdmin(pageNumber:number): Observable<AllPortfolio> {
     return this.requestService.get(`http://localhost:5000/api/v1/${ApiUrl.admin}/${ApiUrl.portfolio}?page=${pageNumber}`);
     // return this.requestService.get(`${ApiUrl.backendUrl}/${ApiUrl.portfolio}`);
   }

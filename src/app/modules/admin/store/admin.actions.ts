@@ -1,5 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-import { Category, Portfolio } from '@app/shared/models';
+import { AllPortfolio, Category, Portfolio } from '@app/shared/models';
 
 
 // Load Create Category Action
@@ -69,7 +69,7 @@ export const LoadPortfolioList = createAction(
 // Load  Portfolio list Action Successful
 export const LoadPortfolioListSuccess = createAction(
   '[LoadPortfolioListSuccess] LoadPortfolioListSuccess',
-  props<{ portfolioList: Portfolio[] }>()
+  props<{ portfolioList: AllPortfolio }>()
 );
 
 // Load Create Portfolio Action Failure
