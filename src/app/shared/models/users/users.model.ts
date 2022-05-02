@@ -5,7 +5,7 @@ export class Users {
   userName?: string;
   email?: string;
   password?: string;
-  role?: string = selectedUser.user;
+  role?: string=selectedUser.admin;
   token?:string;
   createdAt?: Date = new Date(Date.now());
 
