@@ -16,8 +16,7 @@ export class UsersService {
    * @param user
    */
   registerUser(user: Users): Observable<Users> {
-    return this.requestService.post(`http://localhost:5000/api/v1/${ApiUrl.register}`, user);
-    // return this.requestService.post(`${ApiUrl.backendUrl}/${ApiUrl.register}`, user);
+    return this.requestService.post(`${ApiUrl.backendUrl}/${ApiUrl.register}`, user);
   }
 
   /**
@@ -25,8 +24,7 @@ export class UsersService {
    * @param user
    */
   loginUser(email: string, password: string): Observable<Users> {
-    return this.requestService.post(`http://localhost:5000/api/v1/${ApiUrl.login}`, { email, password });
-    // return this.requestService.post(`${ApiUrl.backendUrl}/${ApiUrl.login}`, { email, password });
+    return this.requestService.post(`${ApiUrl.backendUrl}/${ApiUrl.login}`, { email, password });
   }
 
   /**
