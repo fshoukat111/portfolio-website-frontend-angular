@@ -10,7 +10,9 @@ export class ApiUrl {
     static categories = 'categories';
     static category = 'category';
     static adminCategoryCreate = `${this.admin}/category/create`;
+    static adminCategoryList = `${this.admin}/${this.categories}`;
     static portfolio = 'portfolio';
     static adminPortfolioCreate = `${this.admin}/${this.portfolio}/create`;
+    static adminPortfolioList = `${this.admin}/${this.portfolio}`;
 
 }
