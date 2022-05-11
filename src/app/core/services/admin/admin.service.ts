@@ -22,8 +22,8 @@ export class AdminService {
   }
 
   getCategoryListByAdmin(): Observable<Category[]> {
-    return this.requestService.get(`http://localhost:5000/api/v1/${ApiUrl.admin}/${ApiUrl.categories}`);
-    // return this.requestService.get(`${ApiUrl.backendUrl}/${ApiUrl.categories}`);
+    // return this.requestService.get(`http://localhost:5000/api/v1/${ApiUrl.admin}/${ApiUrl.categories}`);
+    return this.requestService.get(`${ApiUrl.backendUrl}/${ApiUrl.admin}/${ApiUrl.categories}`);
   }
 
    /**
@@ -50,8 +50,8 @@ export class AdminService {
  * @returns 
  */
   getPortfoliosByAdmin(pageNumber:number): Observable<AllPortfolio> {
-    return this.requestService.get(`http://localhost:5000/api/v1/${ApiUrl.admin}/${ApiUrl.portfolio}?page=${pageNumber}`);
-    // return this.requestService.get(`${ApiUrl.backendUrl}/${ApiUrl.portfolio}`);
+    // return this.requestService.get(`http://localhost:5000/api/v1/${ApiUrl.admin}/${ApiUrl.portfolio}?page=${pageNumber}`);
+    return this.requestService.get(`${ApiUrl.backendUrl}/${ApiUrl.adminPortfolioList}?page=${pageNumber}`);
   }
 
   /**
@@ -61,8 +61,8 @@ export class AdminService {
    */
 
   getSinglePortfoliosByAdmin(_id: string): Observable<Portfolio> {
-    return this.requestService.get(`http://localhost:5000/api/v1/${ApiUrl.admin}/${ApiUrl.portfolio}/${_id}`);
-    // return this.requestService.get(`${ApiUrl.backendUrl}/${ApiUrl.portfolio}`);
+    // return this.requestService.get(`http://localhost:5000/api/v1/${ApiUrl.admin}/${ApiUrl.portfolio}/${_id}`);
+    return this.requestService.get(`${ApiUrl.backendUrl}/${ApiUrl.portfolio}/${_id}`);
   }
 
   /**
