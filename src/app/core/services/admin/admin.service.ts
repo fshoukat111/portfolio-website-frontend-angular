@@ -12,46 +12,44 @@ export class AdminService {
 
   constructor(private requestService: RequestService) { }
 
-   /**
- *
- * @returns
- * @param portfolio
- */
+  /**
+*
+* @returns
+* @param portfolio
+*/
   createCategoryByAdmin(category: Category): Observable<Category> {
     return this.requestService.post(`${ApiUrl.backendUrl}/${ApiUrl.adminCategoryCreate}`, category);
   }
 
   getCategoryListByAdmin(): Observable<Category[]> {
-    return this.requestService.get(`http://localhost:5000/api/v1/${ApiUrl.admin}/${ApiUrl.categories}`);
-    // return this.requestService.get(`${ApiUrl.backendUrl}/${ApiUrl.categories}`);
+    return this.requestService.get(`${ApiUrl.backendUrl}/${ApiUrl.adminCategoryList}`);
   }
 
-   /**
-  *
-  * @returns
-  * @param category
-  * @param _id
-  */
+  /**
+ *
+ * @returns
+ * @param category
+ * @param _id
+ */
   updateCategoryByAdmin(_id: string, category: Category): Observable<Category> {
-     return this.requestService.put(`http://localhost:5000/api/v1/${ApiUrl.admin}/${ApiUrl.category}/${_id}`, category);
+    return this.requestService.put(`${ApiUrl.backendUrl}/${ApiUrl.adminCategoryList}/${_id}`, category);
   }
 
-   /**
-  * delete portfolio by admin
-  * @returns
-  * @param _id
-  */
+  /**
+ * delete portfolio by admin
+ * @returns
+ * @param _id
+ */
   deleteCategoryAdmin(_id: string): Observable<Category> {
-     return this.requestService.delete(`http://localhost:5000/api/v1/${ApiUrl.admin}/${ApiUrl.category}/${_id}`);
+    return this.requestService.delete(`${ApiUrl.backendUrl}/${ApiUrl.adminCategoryList}/${_id}`);
   }
 
   /**
  * get portfolio list
  * @returns 
  */
-  getPortfoliosByAdmin(pageNumber:number): Observable<AllPortfolio> {
-    return this.requestService.get(`http://localhost:5000/api/v1/${ApiUrl.admin}/${ApiUrl.portfolio}?page=${pageNumber}`);
-    // return this.requestService.get(`${ApiUrl.backendUrl}/${ApiUrl.portfolio}`);
+  getPortfoliosByAdmin(pageNumber: number): Observable<AllPortfolio> {
+    return this.requestService.get(`${ApiUrl.backendUrl}/${ApiUrl.adminPortfolioList}?page=${pageNumber}`);
   }
 
   /**
@@ -61,8 +59,7 @@ export class AdminService {
    */
 
   getSinglePortfoliosByAdmin(_id: string): Observable<Portfolio> {
-    return this.requestService.get(`http://localhost:5000/api/v1/${ApiUrl.admin}/${ApiUrl.portfolio}/${_id}`);
-    // return this.requestService.get(`${ApiUrl.backendUrl}/${ApiUrl.portfolio}`);
+    return this.requestService.get(`${ApiUrl.backendUrl}/${ApiUrl.adminPortfolioList}/${_id}`);
   }
 
   /**
@@ -71,8 +68,7 @@ export class AdminService {
    * @param portfolio
    */
   createPortfolioByAdmin(adminPortfolio: Portfolio): Observable<Portfolio> {
-    return this.requestService.post(`http://localhost:5000/api/v1/${ApiUrl.adminPortfolioCreate}`, adminPortfolio);
-    // return this.requestService.post(`${ApiUrl.backendUrl}/${ApiUrl.admin}/${ApiUrl.adminPortfolioCreate}`, { portfolio });
+    return this.requestService.post(`${ApiUrl.backendUrl}/${ApiUrl.adminPortfolioCreate}`, adminPortfolio);
   }
 
   /**
@@ -82,7 +78,7 @@ export class AdminService {
    * @param _id
    */
   updatePortfolioByAdmin(_id: string, adminPortfolio: Portfolio): Observable<Portfolio> {
-    return this.requestService.put(`http://localhost:5000/api/v1/${ApiUrl.admin}/${ApiUrl.portfolio}/${_id}`, adminPortfolio);
+    return this.requestService.put(`${ApiUrl.backendUrl}/${ApiUrl.adminPortfolioList}/${_id}`, adminPortfolio);
   }
 
   /**
@@ -91,6 +87,6 @@ export class AdminService {
    * @param _id
    */
   deletePortfolioAdmin(_id: string): Observable<Portfolio> {
-    return this.requestService.delete(`http://localhost:5000/api/v1/${ApiUrl.admin}/${ApiUrl.portfolio}/${_id}`);
+    return this.requestService.delete(`${ApiUrl.backendUrl}/${ApiUrl.adminPortfolioList}/${_id}`);
   }
 }

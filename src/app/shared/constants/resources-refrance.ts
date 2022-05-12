@@ -9,8 +9,11 @@ export class ApiUrl {
     static logout = 'logout';
     static categories = 'categories';
     static category = 'category';
-    static adminCategoryCreate = `${this.admin}/category/create`;
+    static create = 'create'
+    static adminCategoryCreate = `${this.admin}/category/${this.create}`;
+    static adminCategoryList = `${this.admin}/${this.categories}`;
     static portfolio = 'portfolio';
-    static adminPortfolioCreate = `${this.admin}/${this.portfolio}/create`;
+    static adminPortfolioCreate = `${this.admin}/${this.portfolio}/${this.create}`;
+    static adminPortfolioList = `${this.admin}/${this.portfolio}`;
 
 }
