@@ -1,9 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ProjectListComponent } from '@app/modules/projects-section/pages';
+import { AppRotues } from '@app/shared/constants/app.routes';
+import { ProjectDetailComponent } from './pages';
+import { ProjectSectionComponent } from './project-section.component';
 
 const routes: Routes = [
-  {path:"",component:ProjectListComponent}
+  {path:"",component:ProjectSectionComponent},
+  {path:`${AppRotues.portfolioDetail}/:id`,component:ProjectDetailComponent},
 ];
 
 @NgModule({
