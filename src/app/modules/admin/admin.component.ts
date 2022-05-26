@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { select, Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
-import { AllPortfolio, Category, Portfolio } from '@app/shared/models';
+import { AllProject, Category, Project } from '@app/shared/models';
 import {
   LoadCategoryList,
   LoadCreatePortfolio,
@@ -22,7 +22,7 @@ export class AdminComponent implements OnInit {
   public isShowing = true;
   public tab: number;
   public categoryList: Category[] = [];
-  public portfolioList: AllPortfolio[] = [];
+  public portfolioList: AllProject[] = [];
   public page: number = 1;
   private subscriptions$: Subscription[] = [];
 
@@ -104,8 +104,8 @@ export class AdminComponent implements OnInit {
   /**
    * parent funcation for create portfolio
    */
-  public createPortfolio(adminPortfolio: Portfolio): void {
-    this.adminStore.dispatch(LoadCreatePortfolio({ adminPortfolio: adminPortfolio }));
+  public createPortfolio(adminProject: Project): void {
+    this.adminStore.dispatch(LoadCreatePortfolio({ adminProject: adminProject }));
   }
 
   public pageChange(event):void {

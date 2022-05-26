@@ -1,5 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-import { AllPortfolio, Category, Portfolio } from '@app/shared/models';
+import { AllProject, Category, Project } from '@app/shared/models';
 
 
 // Load Create Category Action
@@ -69,7 +69,7 @@ export const LoadPortfolioList = createAction(
 // Load  Portfolio list Action Successful
 export const LoadPortfolioListSuccess = createAction(
   '[LoadPortfolioListSuccess] LoadPortfolioListSuccess',
-  props<{ portfolioList: AllPortfolio }>()
+  props<{ portfolioList: AllProject }>()
 );
 
 // Load Create Portfolio Action Failure
@@ -88,7 +88,7 @@ export const LoadPortfolioById = createAction(
 // Load  Portfolio by id Action Successful
 export const LoadPortfolioByIdSuccess = createAction(
   '[LoadPortfolioByIdSuccess] LoadPortfolioByIdSuccess',
-  props<{ adminPortfolioDetail: Portfolio }>()
+  props<{ adminProjectDetail: Project }>()
 );
 
 // Load  Portfolio by id Action Failure
@@ -100,14 +100,14 @@ export const LoadPortfolioByIdFail = createAction(
 // Load  Portfolio by id Action
 export const LoadPortfolioUpdateById = createAction(
   '[LoadPortfolioUpdateById] LoadPortfolioUpdateById',
-  props<{ _id:string,adminPortfolio:Portfolio }>()
+  props<{ _id:string,adminProject:Project }>()
 
 );
 
 // Load  Portfolio by id Action Successful
 export const LoadPortfolioUpdateByIdSuccess = createAction(
   '[LoadPortfolioUpdateByIdSuccess] LoadPortfolioUpdateByIdSuccess',
-  props<{ adminPortfolio: Portfolio }>()
+  props<{ adminProject: Project }>()
 );
 
 // Load  Portfolio by id Action Failure
@@ -127,7 +127,7 @@ export const LoadPortfolioDeleteById = createAction(
 // Load delete Portfolio by id Action Successful
 export const LoadPortfolioDeleteByIdSuccess = createAction(
   '[LoadPortfolioDeleteByIdSuccess] LoadPortfolioDeleteByIdSuccess',
-  props<{ adminPortfolio: Portfolio }>()
+  props<{ adminProject: Project }>()
 );
 
 // Load delete Portfolio by id Action Failure
@@ -139,14 +139,14 @@ export const LoadPortfolioDeleteByIdFail = createAction(
 // Load Create Portfolio Action
 export const LoadCreatePortfolio = createAction(
   '[LoadCreatePortfolio] LoadCreatePortfolio',
-  props<{ adminPortfolio: Portfolio }>()
+  props<{ adminProject: Project }>()
 
 );
 
 // Load Create Portfolio Action Successful
 export const LoadCreatePortfolioSuccess = createAction(
   '[LoadCreatePortfolioSuccess] LoadCreatePortfolioSuccess',
-  props<{ adminPortfolio: Portfolio }>()
+  props<{ adminProject: Project }>()
 );
 
 // Load Create Portfolio Action Failure

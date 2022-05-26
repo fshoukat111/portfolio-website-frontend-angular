@@ -6,10 +6,10 @@
                 <div>
                     <mat-form-field appearance="fill">
                         <mat-label class="label-title">Category</mat-label>
-                        <mat-select multiple name="category" matNativeControl [(ngModel)]="portfolioDetail.categories">
+                        <mat-select multiple name="category" matNativeControl [(ngModel)]="projectDetail.categories">
                             <mat-select-trigger>
                                 <span class="example-additional-selection">
-                                    {{portfolioDetail.categories}}
+                                    {{projectDetail.categories}}
                                 </span>
                             </mat-select-trigger>
                             <mat-option *ngFor="let category of categoryList" [value]="category.categoryTitle">
@@ -22,7 +22,7 @@
                     <mat-form-field appearance="legacy">
                         <mat-label class="label-title">Title:</mat-label>
                         <input matInput type="text" name="title" placeholder="Title" class="text-of-form"
-                            value="{{portfolioDetail.portfolioTitle}}" [(ngModel)]="portfolioDetail.portfolioTitle" />
+                            value="{{projectDetail.portfolioTitle}}" [(ngModel)]="projectDetail.portfolioTitle" />
                         <mat-icon matSuffix>mail_outline</mat-icon>
                         <!-- <mat-error *ngIf="(form.get('email')).errors?.required">Email is required</mat-error>
                       <mat-error *ngIf="(form.get('email')).errors?.pattern">Please enter valid email</mat-error> -->
@@ -34,16 +34,16 @@
                         <mat-form-field class="example-full-width" appearance="fill">
                             <mat-label class="label-title">Description</mat-label>
                             <textarea matInput placeholder="Decription" name="Decription" class="text-of-form"
-                                value="{{portfolioDetail.portfolioDescription}}"
-                                [(ngModel)]="portfolioDetail.portfolioDescription"></textarea>
+                                value="{{projectDetail.portfolioDescription}}"
+                                [(ngModel)]="projectDetail.portfolioDescription"></textarea>
                         </mat-form-field>
                     </p>
                 </div>
                 <div>
                     <mat-form-field appearance="legacy">
                         <mat-label class="label-title">Url:</mat-label>
-                        <input matInput type="url" name="url" value="{{portfolioDetail.portfolioUrl}}"
-                            class="text-of-form" [(ngModel)]="portfolioDetail.portfolioUrl" placeholder="url" />
+                        <input matInput type="url" name="url" value="{{projectDetail.portfolioUrl}}"
+                            class="text-of-form" [(ngModel)]="projectDetail.portfolioUrl" placeholder="url" />
                         <mat-icon matSuffix>domain icon</mat-icon>
                         <!-- <mat-error *ngIf="(form.get('email')).errors?.required">Email is required</mat-error>
                       <mat-error *ngIf="(form.get('email')).errors?.pattern">Please enter valid email</mat-error> -->
@@ -58,14 +58,14 @@
                 </div>
                 <div class="form-button">
                     <button mat-raised-button color="primary" type="button"
-                        (click)="updatePortfolioById(portfolioDetail._id,portfolioDetail)">
+                        (click)="updatePortfolioById(projectDetail._id,projectDetail)">
                         Update
                     </button>
                 </div>
                 <div class="form-button">
 
                     <button mat-raised-button color="warn" type="button"
-                        (click)="deletePortfolioById(portfolioDetail._id)">
+                        (click)="deletePortfolioById(projectDetail._id)">
                         Delete
                     </button>
                 </div>

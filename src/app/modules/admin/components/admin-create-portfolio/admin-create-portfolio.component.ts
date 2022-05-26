@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Category, Portfolio } from '@app/shared/models';
+import { Category, Project } from '@app/shared/models';
 
 @Component({
   selector: 'app-admin-create-portfolio',
@@ -10,9 +10,9 @@ export class AdminCreatePortfolioComponent implements OnInit {
 
   @Input() categoryList:Category[];
 
-  @Output() createPortfolio = new EventEmitter<Portfolio>();
+  @Output() createPortfolio = new EventEmitter<Project>();
 
-  public portfolio:Portfolio = new Portfolio();
+  public portfolio:Project = new Project();
   
   constructor() { }
 
