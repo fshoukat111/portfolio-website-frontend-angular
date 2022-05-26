@@ -5,7 +5,7 @@ import * as adminAction from '@app/modules/admin/store/admin.actions';
 import { of } from 'rxjs';
 import { LocalStorageService } from '@app/core/services/local-storage.service';
 import { AdminService } from '@app/core/services/admin/admin.service';
-import { AllPortfolio, Category, Portfolio } from '@app/shared/models';
+import { AllProject, Category, Project } from '@app/shared/models';
 
 
 @Injectable()
@@ -96,7 +96,7 @@ export class AdminSectionEffects {
   getPortfolioList$ = createEffect(() =>
     this.actions$.pipe(ofType(adminAction.LoadPortfolioList),
       switchMap((action) => {
-        return this.adminService.getPortfoliosByAdmin(action.pageNumber).pipe(map((portfolioList: AllPortfolio) => {
+        return this.adminService.getPortfoliosByAdmin(action.pageNumber).pipe(map((portfolioList: AllProject) => {
           return adminAction.LoadPortfolioListSuccess({ portfolioList });
         }),
           catchError((error) => {
@@ -120,8 +120,8 @@ export class AdminSectionEffects {
   getPortfolioById$ = createEffect(() =>
     this.actions$.pipe(ofType(adminAction.LoadPortfolioById),
       switchMap((action) => {
-        return this.adminService.getSinglePortfoliosByAdmin(action._id).pipe(map((adminPortfolioDetail: Portfolio) => {
-          return adminAction.LoadPortfolioByIdSuccess({ adminPortfolioDetail });
+        return this.adminService.getSinglePortfoliosByAdmin(action._id).pipe(map((adminProjectDetail: Project) => {
+          return adminAction.LoadPortfolioByIdSuccess({ adminProjectDetail });
         }),
           catchError((error) => {
             // this.messageService.add({
@@ -144,8 +144,8 @@ export class AdminSectionEffects {
   getPortfolioUpdate$ = createEffect(() =>
     this.actions$.pipe(ofType(adminAction.LoadPortfolioUpdateById),
       switchMap((action) => {
-        return this.adminService.updatePortfolioByAdmin(action._id, action.adminPortfolio).pipe(map((adminPortfolio: Portfolio) => {
-          return adminAction.LoadPortfolioUpdateByIdSuccess({ adminPortfolio });
+        return this.adminService.updatePortfolioByAdmin(action._id, action.adminProject).pipe(map((adminProject: Project) => {
+          return adminAction.LoadPortfolioUpdateByIdSuccess({ adminProject });
         }),
           catchError((error) => {
             // this.messageService.add({
@@ -168,8 +168,8 @@ export class AdminSectionEffects {
   getPortfolioDelete$ = createEffect(() =>
     this.actions$.pipe(ofType(adminAction.LoadPortfolioDeleteById),
       switchMap((action) => {
-        return this.adminService.deletePortfolioAdmin(action._id).pipe(map((adminPortfolio: Portfolio) => {
-          return adminAction.LoadPortfolioDeleteByIdSuccess({ adminPortfolio });
+        return this.adminService.deletePortfolioAdmin(action._id).pipe(map((adminProject: Project) => {
+          return adminAction.LoadPortfolioDeleteByIdSuccess({ adminProject });
         }),
           catchError((error) => {
             // this.messageService.add({
@@ -192,8 +192,8 @@ export class AdminSectionEffects {
   getCreatePortfolio$ = createEffect(() =>
     this.actions$.pipe(ofType(adminAction.LoadCreatePortfolio),
       switchMap((action) => {
-        return this.adminService.createPortfolioByAdmin(action.adminPortfolio).pipe(map((adminPortfolio: Portfolio) => {
-          return adminAction.LoadCreatePortfolioSuccess({ adminPortfolio });
+        return this.adminService.createPortfolioByAdmin(action.adminProject).pipe(map((adminProject: Project) => {
+          return adminAction.LoadCreatePortfolioSuccess({ adminProject });
         }),
           catchError((error) => {
             // this.messageService.add({
