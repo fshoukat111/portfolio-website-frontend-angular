@@ -2,11 +2,11 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Category, Project } from '@app/shared/models';
 
 @Component({
-  selector: 'app-admin-create-portfolio',
-  templateUrl: './admin-create-portfolio.component.html',
-  styleUrls: ['./admin-create-portfolio.component.sass']
+  selector: 'app-admin-create-project',
+  templateUrl: './admin-create-project.component.html',
+  styleUrls: ['./admin-create-project.component.sass']
 })
-export class AdminCreatePortfolioComponent implements OnInit {
+export class AdminCreateProjectComponent implements OnInit {
 
   @Input() categoryList:Category[];
 
