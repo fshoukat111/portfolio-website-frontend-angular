@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { AppRotues } from '@app/shared/constants/app.routes';
-import { AllPortfolio, Portfolio } from '@app/shared/models';
+import { AllProject, Project } from '@app/shared/models';
 
 
 @Component({
@@ -12,7 +12,7 @@ import { AllPortfolio, Portfolio } from '@app/shared/models';
 
 
 export class AdminPortfolioListComponent implements OnInit {
-  @Input() portfolioList:AllPortfolio[] = [];
+  @Input() portfolioList:AllProject[] = [];
   @Input() page:number;
 
   @Output() pageChange = new EventEmitter();
@@ -27,10 +27,10 @@ export class AdminPortfolioListComponent implements OnInit {
   
   /**
    * redirect to post detail page
-   * @param portfolio 
+   * @param project 
    */
-  public detailPageRoute(portfolio:Portfolio):void{
-    this.router.navigate([`${AppRotues.admin}/${AppRotues.portfolioDetail}/${portfolio._id}`])
+  public detailPageRoute(project:Project):void{
+    this.router.navigate([`${AppRotues.admin}/${AppRotues.portfolioDetail}/${project._id}`])
   }
 
 
