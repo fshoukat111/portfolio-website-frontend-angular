@@ -9,10 +9,10 @@
   </app-admin-sidebar>
 
   <div class="example-sidenav-content" [ngSwitch]="tab">
-    <app-admin-portfolio-list [portfolioList]="portfolioList" [page]="page"
-      (pageChange)=pageChange($event) *ngSwitchDefault></app-admin-portfolio-list>
-    <app-admin-create-portfolio *ngSwitchCase="2" (createPortfolio)="createPortfolio($event)"
-      [categoryList]="categoryList"></app-admin-create-portfolio>
+    <app-admin-project-list [portfolioList]="portfolioList" [page]="page"
+      (pageChange)=pageChange($event) *ngSwitchDefault></app-admin-project-list>
+    <app-admin-create-project *ngSwitchCase="2" (createPortfolio)="createPortfolio($event)"
+      [categoryList]="categoryList"></app-admin-create-project>
 
   </div>
 

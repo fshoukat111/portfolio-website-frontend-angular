@@ -1,1 +1,1 @@
-export * from '@app/modules/admin/pages/admin-portfolio-detail/admin-portfolio-detail.component';
+export * from '@app/modules/admin/pages/admin-project-detail/admin-project-detail.component';
