@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ProjectsSectionModule } from '@app/modules';
+import { MaterialUiModule } from './modules';
 
 /**
  * SHARED MODULES
@@ -8,6 +9,8 @@ import { ProjectsSectionModule } from '@app/modules';
  const SHARED_MODULES = [
   CommonModule,
   ProjectsSectionModule,
+  MaterialUiModule,
+
 ]
 
 /**
