@@ -5,13 +5,13 @@ import { AllProject, Project } from '@app/shared/models';
 
 
 @Component({
-  selector: 'app-admin-portfolio-list',
-  templateUrl: './admin-portfolio-list.component.html',
-  styleUrls: ['./admin-portfolio-list.component.sass']
+  selector: 'app-admin-project-list',
+  templateUrl: './admin-project-list.component.html',
+  styleUrls: ['./admin-project-list.component.sass']
 })
 
 
-export class AdminPortfolioListComponent implements OnInit {
+export class AdminProjectListComponent implements OnInit {
   @Input() portfolioList:AllProject[] = [];
   @Input() page:number;
 
