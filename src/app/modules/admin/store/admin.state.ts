@@ -1,13 +1,13 @@
 import { Category } from "@app/shared/models";
-import { AllPortfolio, Portfolio } from "@app/shared/models/portfolios/portfolios.model";
+import { AllProject, Project } from "@app/shared/models/projects/project.model";
 
 /** State for Tab store. */
 export interface IAdminState {
-    adminPortfolio:Portfolio,
-    adminPortfolioDetail:Portfolio,
+    adminProject:Project,
+    adminProjectDetail:Project,
     categoryList: Category[],
     category: Category,
-    portfolioList: AllPortfolio,
+    portfolioList: AllProject,
     _id:string,
     pageNumber:number
 
@@ -15,11 +15,11 @@ export interface IAdminState {
 
 /** Initial state for Tab store. */
 export const initialAdminState: IAdminState = {
-    adminPortfolio:{},
+    adminProject:{},
     categoryList:[],
     portfolioList:{},
     category:{},
-    adminPortfolioDetail:{},
+    adminProjectDetail:{},
     _id:'',
     pageNumber:1
 };

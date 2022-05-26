@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { select, Store } from '@ngrx/store';
 
-import { Category, Portfolio } from '@app/shared/models';
+import { Category, Project } from '@app/shared/models';
 import {
   LoadPortfolioById,
   LoadPortfolioUpdateById,
@@ -24,8 +24,7 @@ import { AdminConfirmDialogComponent } from '../../components/admin-confirm-dial
 export class AdminPortfolioDetailComponent implements OnInit {
 
   private _id: string;
-  public portfolioDetail: Portfolio;
-  public acategory: Category;
+  public projectDetail: Project;
   public categoryList: Category[];
   private subscriptions$: Subscription[] = [];
 
@@ -79,9 +78,9 @@ export class AdminPortfolioDetailComponent implements OnInit {
   */
   private getPortfolioById(): void {
    this.subscriptions$.push(
-    this.adminStore.pipe(select(getPortfolioByIdSelector)).subscribe((portfolioDetail: Portfolio) => {
-      if (portfolioDetail) {
-        this.portfolioDetail = portfolioDetail;
+    this.adminStore.pipe(select(getPortfolioByIdSelector)).subscribe((projectDetail: Project) => {
+      if (projectDetail) {
+        this.projectDetail = projectDetail;
       }
     })
    )
@@ -92,8 +91,8 @@ export class AdminPortfolioDetailComponent implements OnInit {
    * @param _id 
    * @param portfolio 
   */
-  public updatePortfolioById(_id: string, portfolio: Portfolio): void {
-    this.adminStore.dispatch(LoadPortfolioUpdateById({ _id: this.portfolioDetail._id, adminPortfolio: portfolio }));
+  public updatePortfolioById(_id: string, project: Project): void {
+    this.adminStore.dispatch(LoadPortfolioUpdateById({ _id: this.projectDetail._id, adminProject: project }));
     this.getPortfolioById();
     this.router.navigate([`${AppRotues.admin}`])
   }
@@ -114,7 +113,7 @@ export class AdminPortfolioDetailComponent implements OnInit {
     });
     dialogRef.afterClosed().subscribe((confirmed: boolean) => {
       if (confirmed) {
-        this.adminStore.dispatch(LoadPortfolioDeleteById({ _id: this.portfolioDetail._id }));
+        this.adminStore.dispatch(LoadPortfolioDeleteById({ _id: this.projectDetail._id }));
         this.router.navigate([`${AppRotues.admin}`])
       }
     });

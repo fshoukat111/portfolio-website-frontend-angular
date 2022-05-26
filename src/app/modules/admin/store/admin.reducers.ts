@@ -71,9 +71,9 @@ const creatAdminSectionReducer = createReducer(initialAdminState,
     ...state,
   })),
 
-  on(adminAction.LoadPortfolioByIdSuccess, (state, { adminPortfolioDetail }) => ({
+  on(adminAction.LoadPortfolioByIdSuccess, (state, { adminProjectDetail }) => ({
     ...state,
-    adminPortfolioDetail
+    adminProjectDetail
   })),
 
   on(adminAction.LoadPortfolioByIdFail, (state, { error }) => ({
@@ -86,9 +86,9 @@ const creatAdminSectionReducer = createReducer(initialAdminState,
     ...state,
   })),
 
-  on(adminAction.LoadPortfolioUpdateByIdSuccess, (state, { adminPortfolio }) => ({
+  on(adminAction.LoadPortfolioUpdateByIdSuccess, (state, { adminProject }) => ({
     ...state,
-    adminPortfolio
+    adminProject
   })),
 
   on(adminAction.LoadPortfolioUpdateByIdFail, (state, { error }) => ({
@@ -101,9 +101,9 @@ const creatAdminSectionReducer = createReducer(initialAdminState,
     ...state,
   })),
 
-  on(adminAction.LoadPortfolioDeleteByIdSuccess, (state, { adminPortfolio }) => ({
+  on(adminAction.LoadPortfolioDeleteByIdSuccess, (state, { adminProject }) => ({
     ...state,
-    adminPortfolio
+    adminProject
   })),
 
   on(adminAction.LoadPortfolioDeleteByIdFail, (state, { error }) => ({
@@ -112,14 +112,14 @@ const creatAdminSectionReducer = createReducer(initialAdminState,
   })),
 
   //Create Portfolio By Admin Reducers
-  on(adminAction.LoadCreatePortfolio, (state, { adminPortfolio }) => ({
+  on(adminAction.LoadCreatePortfolio, (state, { adminProject }) => ({
     ...state,
-    adminPortfolio
+    adminProject
   })),
 
-  on(adminAction.LoadCreatePortfolioSuccess, (state, { adminPortfolio }) => ({
+  on(adminAction.LoadCreatePortfolioSuccess, (state, { adminProject }) => ({
     ...state,
-    adminPortfolio
+    adminProject
   })),
 
   on(adminAction.LoadCreatePortfolioFail, (state, { error }) => ({

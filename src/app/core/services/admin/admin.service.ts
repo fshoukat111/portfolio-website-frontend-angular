@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AllPortfolio, Portfolio } from '@app/shared/models/portfolios/portfolios.model';
+import { AllProject, Project } from '@app/shared/models/projects/project.model';
 import { Observable } from 'rxjs';
 import { RequestService } from '@app/core/services';
 import { ApiUrl } from '@app/shared/constants/resources-refrance';
@@ -22,7 +22,9 @@ export class AdminService {
   }
 
   getCategoryListByAdmin(): Observable<Category[]> {
-    return this.requestService.get(`${ApiUrl.backendUrl}/${ApiUrl.adminCategoryList}`);
+    // return this.requestService.get(`${ApiUrl.backendUrl}/${ApiUrl.adminCategoryList}`);
+    return this.requestService.get(`http://localhost:5000/api/v1/${ApiUrl.admin}/${ApiUrl.categories}`);
+
   }
 
   /**
@@ -48,8 +50,9 @@ export class AdminService {
  * get portfolio list
  * @returns 
  */
-  getPortfoliosByAdmin(pageNumber: number): Observable<AllPortfolio> {
-    return this.requestService.get(`${ApiUrl.backendUrl}/${ApiUrl.adminPortfolioList}?page=${pageNumber}`);
+  getPortfoliosByAdmin(pageNumber: number): Observable<AllProject> {
+    // return this.requestService.get(`${ApiUrl.backendUrl}/${ApiUrl.adminPortfolioList}?page=${pageNumber}`);
+    return this.requestService.get(`http://localhost:5000/api/v1/${ApiUrl.admin}/${ApiUrl.portfolio}?page=${pageNumber}`);
   }
 
   /**
@@ -58,8 +61,9 @@ export class AdminService {
    * @returns 
    */
 
-  getSinglePortfoliosByAdmin(_id: string): Observable<Portfolio> {
-    return this.requestService.get(`${ApiUrl.backendUrl}/${ApiUrl.adminPortfolioList}/${_id}`);
+  getSinglePortfoliosByAdmin(_id: string): Observable<Project> {
+    return this.requestService.get(`http://localhost:5000/api/v1/${ApiUrl.admin}/${ApiUrl.portfolio}/${_id}`);
+    // return this.requestService.get(`${ApiUrl.backendUrl}/${ApiUrl.adminPortfolioList}/${_id}`);
   }
 
   /**
@@ -67,8 +71,10 @@ export class AdminService {
    * @returns
    * @param portfolio
    */
-  createPortfolioByAdmin(adminPortfolio: Portfolio): Observable<Portfolio> {
-    return this.requestService.post(`${ApiUrl.backendUrl}/${ApiUrl.adminPortfolioCreate}`, adminPortfolio);
+  createPortfolioByAdmin(adminProject: Project): Observable<Project> {
+    return this.requestService.post(`http://localhost:5000/api/v1//${ApiUrl.adminPortfolioCreate}`, adminProject);
+
+    // return this.requestService.post(`${ApiUrl.backendUrl}/${ApiUrl.adminPortfolioCreate}`, adminPortfolio);
   }
 
   /**
@@ -77,8 +83,9 @@ export class AdminService {
    * @param portfolio
    * @param _id
    */
-  updatePortfolioByAdmin(_id: string, adminPortfolio: Portfolio): Observable<Portfolio> {
-    return this.requestService.put(`${ApiUrl.backendUrl}/${ApiUrl.adminPortfolioList}/${_id}`, adminPortfolio);
+  updatePortfolioByAdmin(_id: string, adminProject: Project): Observable<Project> {
+    return this.requestService.put(`http://localhost:5000/api/v1/${ApiUrl.admin}/${ApiUrl.portfolio}/${_id}`, adminProject);
+    // return this.requestService.put(`${ApiUrl.backendUrl}/${ApiUrl.adminPortfolioList}/${_id}`, adminPortfolio);
   }
 
   /**
@@ -86,7 +93,8 @@ export class AdminService {
    * @returns
    * @param _id
    */
-  deletePortfolioAdmin(_id: string): Observable<Portfolio> {
-    return this.requestService.delete(`${ApiUrl.backendUrl}/${ApiUrl.adminPortfolioList}/${_id}`);
+  deletePortfolioAdmin(_id: string): Observable<Project> {
+    return this.requestService.delete(`http://localhost:5000/api/v1/${ApiUrl.admin}/${ApiUrl.portfolio}/${_id}`);
+    // return this.requestService.delete(`${ApiUrl.backendUrl}/${ApiUrl.adminPortfolioList}/${_id}`);
   }
 }
