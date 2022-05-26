@@ -17,11 +17,11 @@ import { MatDialog } from '@angular/material/dialog';
 import { AdminConfirmDialogComponent } from '../../components/admin-confirm-dialog/admin-confirm-dialog.component';
 
 @Component({
-  selector: 'app-admin-portfolio-detail',
-  templateUrl: './admin-portfolio-detail.component.html',
-  styleUrls: ['./admin-portfolio-detail.component.sass']
+  selector: 'app-admin-project-detail',
+  templateUrl: './admin-project-detail.component.html',
+  styleUrls: ['./admin-project-detail.component.sass']
 })
-export class AdminPortfolioDetailComponent implements OnInit {
+export class AdminProjectDetailComponent implements OnInit {
 
   private _id: string;
   public projectDetail: Project;

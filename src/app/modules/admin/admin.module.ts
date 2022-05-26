@@ -6,10 +6,10 @@ import { AdminRoutingModule } from './admin-routing.module';
 import { AdminComponent } from '@app/modules/admin/admin.component';
 import { MaterialUiModule } from '@app/shared/modules';
 import { 
-  AdminCreatePortfolioComponent,
-  AdminPortfolioListComponent,
+  AdminCreateProjectComponent,
+  AdminProjectListComponent,
   AdminSidebarComponent } from '@app/modules/admin/components';
-import { AdminPortfolioDetailComponent } from '@app/modules/admin/pages';
+import { AdminProjectDetailComponent } from '@app/modules/admin/pages';
 import { AdminConfirmDialogComponent } from './components/admin-confirm-dialog/admin-confirm-dialog.component';
 
 
@@ -17,9 +17,9 @@ import { AdminConfirmDialogComponent } from './components/admin-confirm-dialog/a
 @NgModule({
   declarations: [
     AdminComponent,
-    AdminCreatePortfolioComponent,
-    AdminPortfolioListComponent,
-    AdminPortfolioDetailComponent,
+    AdminCreateProjectComponent,
+    AdminProjectListComponent,
+    AdminProjectDetailComponent,
     AdminSidebarComponent,
     AdminConfirmDialogComponent,
   ],
