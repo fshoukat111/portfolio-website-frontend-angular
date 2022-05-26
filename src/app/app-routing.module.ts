@@ -12,7 +12,7 @@ const routes: Routes = [
     loadChildren: () => import('@app/modules/admin/admin.module').then(m => m.AdminModule)
   },
   {
-    path: AppRotues.portfolios,
+    path: `${AppRotues.portfolios}`,
     loadChildren: () => import('@app/modules/projects-section/projects-section.module').then(m => m.ProjectsSectionModule)
   },
 
