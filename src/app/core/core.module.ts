@@ -7,6 +7,8 @@ import { EffectsModule } from '@ngrx/effects';
 
 import { userSectionReducer,UserSectionEffects } from '@app/shared/stores';
 import { adminSectionReducer,AdminSectionEffects } from '@app/modules/admin/store';
+import { projectSectionReducer } from '@app/modules/projects-section/store/project.reducer';
+import { ProjectSectionEffects } from '@app/modules/projects-section/store/project.effects';
 
 @NgModule({
   declarations: [],
@@ -15,7 +17,8 @@ import { adminSectionReducer,AdminSectionEffects } from '@app/modules/admin/stor
     HttpClientModule,
     StoreModule.forRoot({
       users: userSectionReducer,
-      admin: adminSectionReducer
+      admin: adminSectionReducer,
+      portfolio: projectSectionReducer
     },
     {
       runtimeChecks: {
@@ -28,7 +31,8 @@ import { adminSectionReducer,AdminSectionEffects } from '@app/modules/admin/stor
 
     EffectsModule.forRoot([
       UserSectionEffects,
-      AdminSectionEffects 
+      AdminSectionEffects,
+      ProjectSectionEffects
     ]),
     StoreDevtoolsModule.instrument({
       maxAge: 25, // Retains last 25 states
