@@ -14,8 +14,8 @@ export class ProjectService {
    * get list of project list for user
    * @returns 
    */
-  getProjectList(): Observable<AllProject> {
-    return this.requestService.get(`http://localhost:5000/api/v1/${ApiUrl.portfolio}`);
+  getProjectList(pageNumber:number): Observable<AllProject> {
+    return this.requestService.get(`http://localhost:5000/api/v1/${ApiUrl.portfolio}?page=${pageNumber}`);
     // return this.requestService.get(`${ApiUrl.backendUrl}/${ApiUrl.portfolio}`);
   }
 

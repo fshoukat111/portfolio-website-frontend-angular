@@ -5,6 +5,8 @@ import { AllProject,Project } from "@app/shared/models";
 // Load  Project list Action
 export const LoadProjectLists = createAction(
   '[LoadProjectLists] LoadProjectLists',
+  props<{ pageNumber: number }>()
+  
 );
 
 // Load  Project list Action Successful
