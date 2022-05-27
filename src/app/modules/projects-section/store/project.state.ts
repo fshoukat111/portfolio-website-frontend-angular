@@ -5,6 +5,7 @@ export interface IProjectState {
     project:Project,
     projectDetail:Project,
     projectList: AllProject,
+    pageNumber:number
 
 }
 
@@ -13,4 +14,5 @@ export const initialProjectState: IProjectState = {
     project:{},
     projectList:{},
     projectDetail:{},
+    pageNumber:1
 };

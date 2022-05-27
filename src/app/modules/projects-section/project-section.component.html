@@ -1,2 +1,4 @@
 <h1 class="heading">Projects</h1>
-<app-project-list [projectList]="projectList" (projectDetail)="projectDetail($event)"></app-project-list>
+<app-project-list [projectList]="projectList" [config]="config"
+(projectDetail)="projectDetail($event)" (pageChange)="pageChange($event)"
+></app-project-list>

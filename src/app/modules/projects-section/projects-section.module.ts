@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 import { ProjectsSectionRoutingModule } from '@app/modules/projects-section/projects-section-routing.module';
 import { MaterialUiModule } from '@app/shared/modules';
@@ -16,7 +17,8 @@ import { ProjectSectionComponent } from './project-section.component';
   imports: [
     CommonModule,
     MaterialUiModule,
-    ProjectsSectionRoutingModule
+    ProjectsSectionRoutingModule,
+    NgxPaginationModule
   ]
 })
 export class ProjectsSectionModule { }
