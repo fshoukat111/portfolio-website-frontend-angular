@@ -8,15 +8,15 @@ import {
   HttpHeaders
 } from '@angular/common/http';
 import { catchError, Observable, throwError } from 'rxjs';
-import { CookieService } from 'ngx-cookie-service';
 
 import { LocalStorageService } from '@app/core/services';
-import { environment } from 'src/environments/environment.prod';
+import { Router } from '@angular/router';
+import { AppRotues } from '@app/shared/constants/app.routes';
 
 @Injectable()
 export class JwtInterceptor implements HttpInterceptor {
 
-  constructor(private localStorageService: LocalStorageService) { }
+  constructor(private localStorageService: LocalStorageService,private router:Router) { }
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     const token = this.localStorageService.get("token");
@@ -32,8 +32,10 @@ export class JwtInterceptor implements HttpInterceptor {
     return next.handle(request).pipe(
       catchError((err) => {
         if (err instanceof HttpErrorResponse) {
-          if (err.status === 401) {
+          if (err.status === 400 || err.status === 401) {
             // redirect user to the logout page
+            this.localStorageService.clear();
+            this.router.navigate([`${AppRotues.login}`])
           }
         }
         return throwError(err);
