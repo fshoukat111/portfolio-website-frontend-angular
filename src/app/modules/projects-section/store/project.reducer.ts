@@ -6,8 +6,9 @@ const creatprojectSectionReducer = createReducer(initialProjectState,
 
 
   //get Portfolio List By Users Reducers
-  on(projectAction.LoadProjectLists, (state) => ({
+  on(projectAction.LoadProjectLists, (state,{pageNumber}) => ({
     ...state,
+    pageNumber
   })),
 
   on(projectAction.LoadProjectListsSuccess, (state, { projectList }) => ({
