@@ -16,6 +16,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { NgxMatFileInputModule } from '@angular-material-components/file-input';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import {MatTabsModule} from '@angular/material/tabs';
+import {MatGridListModule} from '@angular/material/grid-list';
 
 const modules = [
   MatSidenavModule,
@@ -32,7 +33,8 @@ const modules = [
   MatDialogModule,
   MatPaginatorModule,
   NgxMatFileInputModule,
-  MatTabsModule
+  MatTabsModule,
+  MatGridListModule
   
 ]
 

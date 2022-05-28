@@ -26,7 +26,7 @@ export class ProjectSectionEffects {
   getProjectList$ = createEffect(() =>
     this.actions$.pipe(ofType(projectAction.LoadProjectLists),
       switchMap((action) => {
-        return this.projectService.getProjectList().pipe(map((projectList: AllProject) => {
+        return this.projectService.getProjectList(action.pageNumber).pipe(map((projectList: AllProject) => {
           return projectAction.LoadProjectListsSuccess({ projectList });
         }),
           catchError((error) => {
