@@ -15,6 +15,7 @@ const routes: Routes = [
     path: `${AppRotues.portfolios}`,
     loadChildren: () => import('@app/modules/projects-section/projects-section.module').then(m => m.ProjectsSectionModule)
   },
+  { path: '',   redirectTo: `${AppRotues.portfolios}`, pathMatch: 'full' },
 
 ];
 
